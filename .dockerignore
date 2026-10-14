@@ -1,8 +1,0 @@
-node_modules
-.next
-.git
-.claude
-*.tsbuildinfo
-npm-debug.log*
-.env*
-!.env.example
