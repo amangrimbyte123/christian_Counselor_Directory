@@ -1,0 +1,17 @@
+# Nixpacks build config (Dokploy, Build Type: Nixpacks)
+providers = ["node"]
+
+[variables]
+NIXPACKS_NODE_VERSION = "22"
+NODE_ENV = "production"
+NEXT_TELEMETRY_DISABLED = "1"
+
+[phases.install]
+# Dev dependencies (TypeScript, Tailwind, PostCSS) are needed for the build
+cmds = ["npm ci --include=dev --no-audit --no-fund"]
+
+[phases.build]
+cmds = ["npm run build"]
+
+[start]
+cmd = "npm run start -- -H 0.0.0.0 -p ${PORT:-3000}"
