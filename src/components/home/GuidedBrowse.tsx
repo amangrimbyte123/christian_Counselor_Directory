@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { Icon } from "@/components/ui/Icon";
+import { topicLower } from "@/lib/text";
 
 /** Plain-language starting points mapped to specialties. Nothing is stored or sent anywhere. */
 const PROMPTS = [
@@ -15,6 +16,7 @@ const PROMPTS = [
   { id: "change", text: "I'm going through a big change", specs: ["life-transitions-therapy", "stress-and-burnout-therapy"] },
   { id: "child", text: "I'd like support for my child or teen", specs: ["teen-therapy", "family-therapy"] },
   { id: "self", text: "I'd like to understand myself better", specs: ["life-transitions-therapy"] },
+  { id: "faith", text: "I'd like my faith to be part of therapy", specs: ["christian-counseling"] },
 ];
 
 export function GuidedBrowse({ specialties }: { specialties: { slug: string; name: string; summary: string }[] }) {
@@ -57,7 +59,7 @@ export function GuidedBrowse({ specialties }: { specialties: { slug: string; nam
               ))}
             </ul>
             <Link href={`/therapists/?specialty=${suggestions[0].slug}`} className="link-arrow mt-4 text-sm">
-              See therapists who focus on {suggestions[0].name.toLowerCase()} <Icon name="arrow" className="h-4 w-4" />
+              See therapists who focus on {topicLower(suggestions[0].name)} <Icon name="arrow" className="h-4 w-4" />
             </Link>
           </div>
         )}

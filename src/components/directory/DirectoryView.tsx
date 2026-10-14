@@ -33,7 +33,7 @@ export async function DirectoryView({ params, fixed = {}, hide = [], basePath }:
       <section aria-labelledby="results-heading">
         <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
           <h2 id="results-heading" className="font-sans text-base font-medium text-ink-700" aria-live="polite">
-            {result.total === 0 ? "No therapists found" : <>Showing <strong>{from}–{to}</strong> of <strong>{result.total}</strong> therapists</>}
+            {result.total === 0 ? "No therapists found" : <>Showing <strong>{from}–{to}</strong> of <strong>{result.total}</strong> {result.total === 1 ? "therapist" : "therapists"}</>}
           </h2>
           {result.total > 1 && <SortSelect value={params.sort} options={sortOptions} />}
         </div>
@@ -53,7 +53,7 @@ export async function DirectoryView({ params, fixed = {}, hide = [], basePath }:
           </div>
         ) : (
           <>
-            <ul className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+            <ul className="grid gap-5 sm:grid-cols-2">
               {result.items.map((t) => <li key={t.id}><TherapistCard t={t} /></li>)}
             </ul>
             <Pagination page={result.page} totalPages={result.totalPages} hrefFor={(p) => qs({ page: p })} />

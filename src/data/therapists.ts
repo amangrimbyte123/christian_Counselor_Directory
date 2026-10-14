@@ -2,6 +2,7 @@ import type { Profession, SessionFormat, Therapist } from "@/types";
 import { cities } from "./locations";
 import { approaches } from "./approaches";
 import { specialties } from "./specialties";
+import { topicLower } from "@/lib/text";
 
 /**
  * ALL PEOPLE BELOW ARE FICTIONAL SAMPLE DATA for demonstration.
@@ -21,7 +22,9 @@ interface Seed {
 const slugify = (v: string) =>
   v.toLowerCase().replace(/^dr\.?\s+/, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
-const specialtyName = (slug: string) => specialties.find((s) => s.slug === slug)?.name.toLowerCase() ?? slug;
+// "Christian & faith-based" needs a noun to read naturally in "with a focus on …"
+const specialtyName = (slug: string) =>
+  topicLower(specialties.find((s) => s.slug === slug)?.name ?? slug).replace(/faith-based$/, "faith-based counseling");
 const approachName = (slug: string) =>
   approaches.find((a) => a.slug === slug)?.name.replace(/\s*\(.*\)/, "") ?? slug;
 const join = (xs: string[]) =>
@@ -86,6 +89,14 @@ const SEEDS: Seed[] = [
   { n: "Victor Adeyemi", cr: "PhD", p: "psychologist", t: "Clinical Psychologist", c: "houston", f: "o", s: ["ocd-therapy", "anxiety-therapy"], a: ["erp", "act"], fee: [160, 195], y: 13, ages: ["Adults", "Teens"], st: "Evidence-based online treatment for OCD." },
   // Minneapolis
   { n: "Karin Johansson", cr: "LMFT", p: "marriage-family-therapist", t: "Marriage & Family Therapist", c: "minneapolis", f: "b", s: ["relationship-counseling", "grief-counseling", "life-transitions-therapy"], a: ["emotionally-focused", "mindfulness"], fee: [110, 140], y: 12, ages: ["Couples", "Adults"], st: "Gentle, steady help through relationship turning points.", slide: true },
+  // Christian & faith-based counseling (faith integrated at the client's request)
+  { n: "Rachel Whitaker", cr: "LPC", p: "counselor", t: "Licensed Professional Counselor", c: "austin", f: "b", s: ["christian-counseling", "anxiety-therapy"], a: ["cbt", "person-centered"], fee: [90, 120], y: 9, ages: ["Teens", "Adults"], st: "Faith-integrated counseling that welcomes your Christian beliefs into the room, at your invitation.", slide: true, free: true },
+  { n: "Jamal Pierce", cr: "LMFT", p: "marriage-family-therapist", t: "Marriage & Family Therapist", c: "atlanta", f: "b", s: ["christian-counseling", "relationship-counseling"], a: ["gottman", "emotionally-focused"], fee: [110, 145], y: 12, ages: ["Couples", "Adults"], st: "Christian couples counseling grounded in research and shared values.", free: true },
+  { n: "Deborah Okonkwo", cr: "PsyD", p: "psychologist", t: "Clinical Psychologist", c: "houston", f: "o", s: ["christian-counseling", "depression-therapy"], a: ["cbt", "act"], fee: [140, 175], y: 14, ages: ["Adults"], st: "Evidence-based care for low mood, with room for faith, doubt and hope." },
+  { n: "Michael Lindberg", cr: "LPC", p: "counselor", t: "Licensed Professional Counselor", c: "denver", f: "i", s: ["christian-counseling", "grief-counseling"], a: ["person-centered", "mindfulness"], fee: [95, 125], y: 18, ages: ["Adults", "Seniors"], st: "Walking alongside you through grief, with space for prayer if you want it.", slide: true },
+  { n: "Sarah Kowalski", cr: "LCPC", p: "counselor", t: "Professional Counselor", c: "chicago", f: "b", s: ["christian-counseling", "family-therapy", "teen-therapy"], a: ["play-therapy", "cbt"], fee: [100, 130], y: 8, ages: ["Children", "Teens", "Families"], st: "Faith-friendly support for parents, kids and teens." },
+  { n: "Luis Mendoza", cr: "LMHC", p: "counselor", t: "Licensed Mental Health Counselor", c: "miami", f: "b", s: ["christian-counseling", "stress-and-burnout-therapy"], a: ["cbt", "mindfulness"], l: ["english", "spanish"], fee: [95, 125], y: 7, ages: ["Adults"], st: "Bilingual Christian counseling for stress, burnout and life's pressures.", slide: true },
+  { n: "Esther Nakamura", cr: "LMFT", p: "marriage-family-therapist", t: "Marriage & Family Therapist", c: "minneapolis", f: "o", s: ["christian-counseling", "life-transitions-therapy"], a: ["emotionally-focused", "act"], fee: [105, 135], y: 10, ages: ["Adults", "Couples"], st: "Online, faith-integrated support through life's big transitions." },
   { n: "Malik Washington", cr: "LICSW", p: "social-worker", t: "Therapist", c: "minneapolis", f: "o", s: ["depression-therapy", "trauma-therapy"], a: ["cbt", "emdr"], fee: [100, 130], y: 8, ages: ["Adults"], st: "Accessible online therapy with sliding-scale options.", slide: true },
 ];
 

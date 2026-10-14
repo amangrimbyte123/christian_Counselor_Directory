@@ -21,8 +21,8 @@ export function TherapistCard({ t }: { t: Therapist }) {
           </h3>
           <p className="mt-0.5 truncate text-sm text-ink-700">{t.title}</p>
           <p className="truncate text-xs text-ink-500">{t.credentials}</p>
+          <span className="mt-1.5 inline-block rounded-full bg-sand-100 px-2 py-0.5 text-[11px] font-medium text-ink-600">Sample profile</span>
         </div>
-        <span className="self-start whitespace-nowrap rounded-full bg-sand-100 px-2 py-0.5 text-[11px] font-medium text-ink-600">Sample</span>
       </div>
 
       <p className="mt-4 line-clamp-2 text-[15px] leading-relaxed text-ink-700">{t.statement}</p>

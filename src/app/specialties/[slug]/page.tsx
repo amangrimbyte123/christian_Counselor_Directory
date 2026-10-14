@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { topicLower } from "@/lib/text";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { PageHeader } from "@/components/layout/PageHeader";
@@ -21,7 +22,7 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
   if (!s) return { title: "Specialty not found", robots: { index: false } };
   return listingMetadata({
     title: `${s.name} Therapists and Counselors`,
-    description: `${s.summary} Learn what ${s.name.toLowerCase()} therapy involves and browse sample therapists who specialize in it.`,
+    description: `${s.summary} Learn what ${topicLower(s.name)} therapy involves and browse sample therapists who specialize in it.`,
     path: `/specialties/${s.slug}/`,
     params: parseSearchParams(await searchParams),
     ignore: ["specialty"],

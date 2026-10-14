@@ -4,6 +4,20 @@ import { unsplash } from "@/lib/images";
 /** General-information articles written for the demo. Not medical advice. */
 export const posts: Post[] = [
   {
+    slug: "what-is-christian-counseling", image: unsplash("1594100513700-659fa01ce822", "An open Bible and a notebook with a pen on a wooden table surrounded by houseplants"),
+    title: "What Is Christian Counseling? How Faith-Integrated Therapy Works", category: "Faith & therapy", readMinutes: 6,
+    excerpt: "What Christian counseling involves, who provides it, and the questions to ask so you find someone qualified who respects your faith.", publishedOn: "2026-10-02", author: "CounselorDirectory Editorial Team",
+    relatedSpecialties: ["christian-counseling", "relationship-counseling"],
+    body: [
+      { p: "Christian counseling is therapy that brings Christian faith into the conversation alongside established counseling methods. It is for people who want their beliefs to be part of how they understand and work through what they are facing." },
+      { h: "Who provides it", p: "Some Christian counselors are licensed clinicians, such as professional counselors, marriage and family therapists, social workers or psychologists, who integrate faith when a client asks for it. Others are pastoral or biblical counselors working through churches, who may not hold a state licence. Both can be supportive, but only licensed clinicians are regulated by a state board, and they are usually the ones who can diagnose and work with insurance." },
+      { h: "What sessions can look like", p: "Faith-integrated therapy still draws on approaches such as CBT, emotionally focused therapy or person-centered work. Depending on what you want, it might also include prayer, scripture, or exploring how your beliefs relate to what you are going through. A good counselor follows your lead about how much faith to include and never pressures you." },
+      { h: "Questions to ask before you start", p: "Are you licensed, and in which state? How do you integrate faith, and can I choose how much? What training do you have in both counseling and faith integration? How do you work with doubt, or with people from different denominations or traditions? You can verify any licence on your state licensing board's website." },
+      { h: "You don't have to choose a Christian counselor", p: "Professional ethics codes ask licensed therapists to respect clients' religious and spiritual beliefs, so you can bring your faith into therapy with any licensed therapist. If it matters to you, ask in your first call how they would approach it." },
+      { h: "If you are struggling right now", p: "In the US you can call or text 988, the Suicide & Crisis Lifeline, at any time. If you are in immediate danger, call 911." },
+    ],
+  },
+  {
     slug: "how-to-find-a-therapist", image: unsplash("1517971129774-8a2b38fa128e", "A woman writing in a notebook at a table beside a window"), title: "How to Find a Therapist: A Step-by-Step Guide", category: "Getting started", readMinutes: 6,
     excerpt: "From deciding what you need to booking a first call, a calm walk-through of finding the right fit.", publishedOn: "2026-09-12", author: "CounselorDirectory Editorial Team",
     relatedSpecialties: ["anxiety-therapy", "depression-therapy"],

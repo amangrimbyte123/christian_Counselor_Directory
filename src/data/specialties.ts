@@ -51,6 +51,14 @@ export const specialties: Specialty[] = [
   { slug: "life-transitions-therapy", name: "Life Transitions", icon: "compass", summary: "Big changes, personal growth and finding your direction.",
     description: "Therapy for life transitions gives you space to make sense of change, whether chosen or unexpected, such as a move, a new job, a breakup, becoming a parent or retiring, and to grow into what comes next.",
     signs: ["Feeling unsettled after a big change", "Unsure what you want next", "Losing your sense of identity or routine", "Wanting to grow but not knowing where to start"], faqs: faq("life transitions") },
+  { slug: "christian-counseling", name: "Christian & Faith-Based", icon: "cross", summary: "Therapy that welcomes your Christian faith into the conversation.",
+    description: "Christian counseling combines established, evidence-based therapy with a Christian faith perspective, for people who want their beliefs to be part of the work. How much faith is included, such as prayer, scripture or simply shared values, is always your choice.",
+    signs: ["Wanting your faith to be welcome in therapy", "Wrestling with doubt, guilt or spiritual questions", "Marriage or family struggles you'd like to explore through shared values", "Anxiety, depression or grief alongside a life of faith"],
+    faqs: [
+      { q: "What is Christian counseling?", a: "Therapy that integrates Christian faith with established counseling methods such as CBT or emotionally focused therapy. Sessions can include prayer or scripture if you want them, but they don't have to." },
+      { q: "Are Christian counselors licensed?", a: "Some are licensed clinicians, such as counselors, marriage and family therapists or psychologists, who integrate faith at your request. Some pastoral or biblical counselors are not state-licensed. Ask about licensure and verify it with your state board." },
+      { q: "Do I have to be a Christian to see one?", a: "No. Many Christian counselors work with people at any stage of faith, including those with questions or doubts. You can also bring your faith into therapy with any licensed therapist; it's fine to ask how they would approach it." },
+    ] },
 ];
 
 export const getSpecialty = (slug: string) => specialties.find((s) => s.slug === slug);

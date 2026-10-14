@@ -13,6 +13,8 @@ const TOPICS = [
   { slug: "family-therapy", title: "Family", text: "Navigating family tension, parenting challenges or changes at home.", tone: "bg-sage-100 text-sage-600" },
   { slug: "trauma-therapy", title: "Trauma & emotional healing", text: "Making peace with difficult experiences, at a pace that feels safe.", tone: "bg-brand-50 text-brand-700" },
   { slug: "life-transitions-therapy", title: "Personal growth & life changes", text: "New chapters, big decisions, or simply wanting to understand yourself.", tone: "bg-sand-100 text-ink-700" },
+  { slug: "grief-counseling", title: "Grief & loss", text: "Support after losing someone or something important, at your own pace.", tone: "bg-sage-100 text-sage-600" },
+  { slug: "christian-counseling", title: "Faith & Christian counseling", text: "Therapy that welcomes your Christian faith, as much or as little as you like.", tone: "bg-coral-50 text-coral-700" },
 ];
 
 export function TopicGrid({ specialties, counts }: { specialties: Specialty[]; counts: Record<string, number> }) {
