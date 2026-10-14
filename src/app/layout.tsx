@@ -10,9 +10,9 @@ const serif = Fraunces({ subsets: ["latin"], variable: "--font-serif", display: 
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
-  title: { default: `${SITE.name}: Find a therapist who fits`, template: `%s | ${SITE.name}` },
+  title: { default: `${SITE.name}: ${SITE.tagline}`, template: `%s | ${SITE.name}` },
   description:
-    "Search therapists, counselors and psychologists by specialty, location and session type. Demo directory with sample data.",
+    "Find Christian couples counselors for marriage, premarital, affair recovery and more, by location and session type. Demo directory with sample data.",
   alternates: { canonical: "/" },
 };
 
@@ -26,7 +26,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           Skip to main content
         </a>
         <div className="bg-brand-900 px-4 py-1.5 text-center text-xs text-brand-100">
-          Demo site: all therapist profiles are fictional sample data and are not verified.
+          Demo site: all counselor profiles are fictional sample data and are not verified.
         </div>
         <Header />
         <main id="main" className="flex-1">{children}</main>

@@ -3,7 +3,7 @@ import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
   title: "Privacy Policy (Demo)",
-  description: "How the CounselorDirectory demo handles your information.",
+  description: "How the Christian Couples Directory demo handles your information.",
   path: "/privacy/",
 });
 

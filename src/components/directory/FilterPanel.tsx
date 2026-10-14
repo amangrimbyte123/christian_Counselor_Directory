@@ -27,9 +27,9 @@ async function Fields({ params, hide, idp }: { params: SearchParams; hide: strin
       )}
       {!hide.includes("specialty") && (
         <div>
-          <label htmlFor={`${idp}specialty`} className={label}>Specialty</label>
+          <label htmlFor={`${idp}specialty`} className={label}>Service</label>
           <select id={`${idp}specialty`} name="specialty" defaultValue={params.specialty ?? ""} className={select}>
-            <option value="">All specialties</option>
+            <option value="">All services</option>
             {specs.map((s) => <option key={s.slug} value={s.slug}>{s.name}</option>)}
           </select>
         </div>
@@ -59,7 +59,7 @@ async function Fields({ params, hide, idp }: { params: SearchParams; hide: strin
         </select>
       </div>
       <div>
-        <label htmlFor={`${idp}approach`} className={label}>Therapy approach</label>
+        <label htmlFor={`${idp}approach`} className={label}>Counseling approach</label>
         <select id={`${idp}approach`} name="approach" defaultValue={params.approach ?? ""} className={select}>
           <option value="">Any approach</option>
           {apps.map((a) => <option key={a.slug} value={a.slug}>{a.name}</option>)}

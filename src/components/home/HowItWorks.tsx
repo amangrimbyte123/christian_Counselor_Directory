@@ -4,9 +4,9 @@ import { Icon } from "@/components/ui/Icon";
 import { PHOTOS } from "@/lib/images";
 
 const STEPS = [
-  { icon: "compass", t: "Explore your needs and preferences", d: "Start with what's on your mind, then narrow by location, online or in-person sessions, language and budget." },
-  { icon: "users", t: "Compare therapist profiles", d: "Read about each person's focus, approach and fees at your own pace. Shortlisting two or three is a good start." },
-  { icon: "message", t: "Contact someone when you're ready", d: "Send a short message or ask about a first call. Many therapists offer a brief consultation to check the fit." },
+  { icon: "compass", t: "Explore what you need as a couple", d: "Start with what you're facing together, then narrow by location, online or in-person sessions, language and budget." },
+  { icon: "users", t: "Compare counselor profiles", d: "Read about each counselor's focus, approach, faith integration and fees at your own pace. Shortlisting two or three is a good start." },
+  { icon: "message", t: "Contact someone when you're ready", d: "Send a short message or ask about a first call. Many counselors offer a brief consultation to check the fit for you both." },
 ];
 
 export function HowItWorks({ onlineCount }: { onlineCount: number }) {
@@ -39,8 +39,8 @@ export function HowItWorks({ onlineCount }: { onlineCount: number }) {
           </div>
           <div className="relative -mt-16 ml-4 mr-4 rounded-2xl bg-white p-5 text-ink-900 shadow-lift sm:ml-8 sm:mr-auto sm:max-w-sm sm:p-6">
             <p className="flex items-center gap-2 text-sm font-semibold text-brand-700"><Icon name="video" className="h-4 w-4" /> Prefer to stay home?</p>
-            <p className="mt-2 text-ink-700">{onlineCount} sample therapists offer secure video sessions, so you can choose beyond your own city.</p>
-            <ButtonLink href="/online-therapy/" variant="accent" className="mt-4">Explore online therapy</ButtonLink>
+            <p className="mt-2 text-ink-700">{onlineCount} sample counselors offer secure video sessions for couples, so you can choose beyond your own city.</p>
+            <ButtonLink href="/online-therapy/" variant="accent" className="mt-4">Explore online counseling</ButtonLink>
           </div>
         </div>
       </div>

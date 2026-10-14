@@ -2,14 +2,13 @@ export type SessionFormat = "online" | "in-person";
 
 export type Profession =
   | "psychologist"
-  | "psychiatrist"
   | "counselor"
   | "social-worker"
   | "marriage-family-therapist";
 
 export interface Specialty {
-  slug: string; // e.g. "anxiety-therapy"
-  name: string; // e.g. "Anxiety"
+  slug: string; // e.g. "christian-marriage-counseling"
+  name: string; // e.g. "Christian Marriage Counseling"
   icon: string; // key into components/ui/Icon
   summary: string;
   description: string;
@@ -64,7 +63,7 @@ export interface Therapist {
   freeConsult: boolean;
   acceptingClients: boolean;
   yearsExperience: number;
-  ages: string[]; // "Adults", "Teens" ...
+  ages: string[]; // "Couples", "Engaged couples" ...
   featured: boolean;
   avatarHue: number; // for generated placeholder avatar
   faqs: { q: string; a: string }[];

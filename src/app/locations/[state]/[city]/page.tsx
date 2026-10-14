@@ -18,7 +18,7 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
   const found = await getCity(state, city);
   if (!found) return { title: "Location not found", robots: { index: false } };
   return listingMetadata({
-    title: `Therapists and Counselors in ${found.city.name}, ${found.state.abbr}`,
+    title: `Christian Couples Counselors in ${found.city.name}, ${found.state.abbr}`,
     description: `Browse ${found.city.count} sample therapists in ${found.city.name}, ${found.state.name}. Filter by specialty, language, fee and online or in-person sessions.`,
     path: `/locations/${state}/${city}/`,
     params: parseSearchParams(await searchParams),
@@ -43,14 +43,14 @@ export default async function CityPage({ params, searchParams }: Props) {
           { name: found.state.name, href: `/locations/${state}/` },
           { name: found.city.name, href: `/locations/${state}/${city}/` },
         ]}
-        title={`Therapists and counselors in ${found.city.name}, ${found.state.abbr}`}
-        intro={`${found.city.count} sample profiles in ${found.city.name}. Compare specialties, fees and availability, then open a profile to request an appointment.`}
+        title={`Christian couples counselors in ${found.city.name}, ${found.state.abbr}`}
+        intro={`${found.city.count} sample profiles in ${found.city.name}. Compare services, fees and availability, then open a profile to request an appointment.`}
       />
       <div className="container-page py-10">
         <DirectoryView params={sp} fixed={{ state, city }} hide={["location"]} basePath={`/locations/${state}/${city}/`} />
         <div className="mt-14 grid gap-8 md:grid-cols-2">
           <section aria-labelledby="by-spec">
-            <h2 id="by-spec" className="text-2xl">Popular specialties</h2>
+            <h2 id="by-spec" className="text-2xl">Popular services</h2>
             <p className="mt-3 flex flex-wrap gap-2">
               {specs.map((s) => <Link key={s.slug} href={`/specialties/${s.slug}/`} className="rounded-full border border-brand-200 bg-brand-50 px-3.5 py-1.5 text-sm text-brand-800 hover:bg-brand-100">{s.name}</Link>)}
             </p>
@@ -60,7 +60,7 @@ export default async function CityPage({ params, searchParams }: Props) {
             <p className="mt-3 flex flex-wrap gap-2">
               <Link href={`/locations/${state}/`} className="rounded-full border border-sand-300 bg-white px-3.5 py-1.5 text-sm hover:bg-brand-50">All of {found.state.name}</Link>
               {neighbors.map((c) => <Link key={c.slug} href={`/locations/${state}/${c.slug}/`} className="rounded-full border border-sand-300 bg-white px-3.5 py-1.5 text-sm hover:bg-brand-50">{c.name}</Link>)}
-              <Link href="/online-therapy/" className="rounded-full border border-sand-300 bg-white px-3.5 py-1.5 text-sm hover:bg-brand-50">Online therapy</Link>
+              <Link href="/online-therapy/" className="rounded-full border border-sand-300 bg-white px-3.5 py-1.5 text-sm hover:bg-brand-50">Online counseling</Link>
             </p>
           </section>
         </div>

@@ -50,7 +50,7 @@ export function HeroGallery({ slides }: { slides: ConcernSlide[] }) {
       // Hold only for keyboard users; a mouse click also focuses the button, which must not stop autoplay
       onFocus={(e) => setHeld(e.target.matches(":focus-visible"))}
       onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setHeld(false); }}
-      aria-roledescription="carousel" aria-label="Common reasons people reach out"
+      aria-roledescription="carousel" aria-label="Common reasons couples reach out"
       role="region"
     >
       <div className="photo-frame relative aspect-[4/3] touch-pan-y overflow-hidden bg-sand-200 shadow-lift lg:aspect-square"
@@ -85,7 +85,7 @@ export function HeroGallery({ slides }: { slides: ConcernSlide[] }) {
         <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink-900/80 via-ink-900/40 to-transparent p-5 pt-16 sm:p-6 sm:pt-20">
           <div aria-live={playing ? "off" : "polite"} className="text-white">
             <p className="text-xs font-semibold uppercase tracking-wider text-brand-100">
-              {index + 1} / {slides.length} · Common reasons people reach out
+              {index + 1} / {slides.length} · Common reasons couples reach out
             </p>
             <p className="mt-1 font-serif text-2xl sm:text-3xl">{current.label}</p>
             <p className="mt-1 text-sm text-white/85">{current.text}</p>

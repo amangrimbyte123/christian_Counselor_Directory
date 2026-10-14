@@ -5,18 +5,18 @@ import { useState } from "react";
 import { Icon } from "@/components/ui/Icon";
 import { topicLower } from "@/lib/text";
 
-/** Plain-language starting points mapped to specialties. Nothing is stored or sent anywhere. */
+/** Plain-language starting points mapped to services. Nothing is stored or sent anywhere. */
 const PROMPTS = [
-  { id: "worry", text: "I worry a lot or feel on edge", specs: ["anxiety-therapy", "stress-and-burnout-therapy"] },
-  { id: "heavy", text: "Things have felt heavy or flat for a while", specs: ["depression-therapy", "grief-counseling"] },
-  { id: "tired", text: "I'm exhausted and stretched too thin", specs: ["stress-and-burnout-therapy", "anxiety-therapy"] },
-  { id: "relationship", text: "A relationship feels strained", specs: ["relationship-counseling", "family-therapy"] },
-  { id: "loss", text: "I've lost someone or something important", specs: ["grief-counseling", "life-transitions-therapy"] },
-  { id: "past", text: "Something from the past still affects me", specs: ["trauma-therapy"] },
-  { id: "change", text: "I'm going through a big change", specs: ["life-transitions-therapy", "stress-and-burnout-therapy"] },
-  { id: "child", text: "I'd like support for my child or teen", specs: ["teen-therapy", "family-therapy"] },
-  { id: "self", text: "I'd like to understand myself better", specs: ["life-transitions-therapy"] },
-  { id: "faith", text: "I'd like my faith to be part of therapy", specs: ["christian-counseling"] },
+  { id: "fight", text: "We keep having the same fight", specs: ["christian-couples-communication", "christian-marriage-counseling"] },
+  { id: "trust", text: "Trust has been broken", specs: ["christian-affair-recovery", "christian-marriage-reconciliation"] },
+  { id: "roommates", text: "We feel more like roommates", specs: ["christian-intimacy-counseling", "christian-marriage-counseling"] },
+  { id: "engaged", text: "We're engaged or planning to marry", specs: ["christian-premarital-counseling"] },
+  { id: "divorce", text: "Divorce has been mentioned", specs: ["christian-marriage-reconciliation", "christian-affair-recovery"] },
+  { id: "change", text: "A big change is straining us", specs: ["christian-couples-life-transitions", "christian-couples-communication"] },
+  { id: "blended", text: "We're blending two families", specs: ["christian-couples-life-transitions"] },
+  { id: "faith", text: "We see faith differently", specs: ["faith-and-spiritual-connection"] },
+  { id: "pray", text: "We'd like to grow together spiritually", specs: ["faith-and-spiritual-connection", "christian-marriage-counseling"] },
+  { id: "invest", text: "We're doing OK and want to stay strong", specs: ["christian-marriage-counseling", "christian-couples-communication"] },
 ];
 
 export function GuidedBrowse({ specialties }: { specialties: { slug: string; name: string; summary: string }[] }) {
@@ -32,7 +32,7 @@ export function GuidedBrowse({ specialties }: { specialties: { slug: string; nam
       </div>
       <p className="mt-2 text-ink-600">Pick whatever feels closest. It&apos;s only a starting point, not an assessment, and nothing you choose is saved.</p>
 
-      <div className="mt-5 flex flex-wrap gap-2" role="group" aria-label="What feels closest to you right now?">
+      <div className="mt-5 flex flex-wrap gap-2" role="group" aria-label="What feels closest to your marriage right now?">
         {PROMPTS.map((p) => {
           const on = p.id === picked;
           return (
@@ -59,12 +59,12 @@ export function GuidedBrowse({ specialties }: { specialties: { slug: string; nam
               ))}
             </ul>
             <Link href={`/therapists/?specialty=${suggestions[0].slug}`} className="link-arrow mt-4 text-sm">
-              See therapists who focus on {topicLower(suggestions[0].name)} <Icon name="arrow" className="h-4 w-4" />
+              See counselors who focus on {topicLower(suggestions[0].name)} <Icon name="arrow" className="h-4 w-4" />
             </Link>
           </div>
         )}
         {!prompt && (
-          <p className="text-sm text-ink-500">Or skip this and <Link href="/specialties/" className="font-medium text-brand-800 underline underline-offset-2">browse every topic</Link>.</p>
+          <p className="text-sm text-ink-500">Or skip this and <Link href="/specialties/" className="font-medium text-brand-800 underline underline-offset-2">browse every service</Link>.</p>
         )}
       </div>
     </div>

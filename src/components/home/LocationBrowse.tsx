@@ -13,8 +13,8 @@ export function LocationBrowse({ states }: { states: StateSummary[] }) {
     <section className="section bg-sand-100" aria-labelledby="locations">
       <div className="container-page grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14">
         <div data-reveal>
-          <SectionHeading id="locations" eyebrow="Near you" title="Browse therapists by location"
-            intro="Prefer to meet in person? Start with your state or city. Many therapists also see clients online across their state. Counts reflect sample data." />
+          <SectionHeading id="locations" eyebrow="Near you" title="Browse counselors by location"
+            intro="Prefer to meet in person? Start with your state or city. Many counselors also see couples online across their state. Counts reflect sample data." />
           <h3 className="mt-8 font-sans text-sm font-semibold uppercase tracking-wider text-ink-700">States</h3>
           <ul className="mt-3 flex flex-wrap gap-2">
             {states.map((s) => (
@@ -39,7 +39,7 @@ export function LocationBrowse({ states }: { states: StateSummary[] }) {
                   <span>
                     <span className={`block font-serif leading-tight ${i === 0 ? "text-3xl" : "text-lg text-ink-900 group-hover:text-brand-800"}`}>{c.name}</span>
                     <span className={`mt-1 flex items-center justify-between text-xs ${i === 0 ? "text-brand-100" : "text-ink-500"}`}>
-                      {c.state.abbr} · {c.count} {i === 0 ? "sample therapists" : "listed"}
+                      {c.state.abbr} · {c.count} {i === 0 ? "sample counselors" : "listed"}
                       <Icon name="arrow" className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                     </span>
                   </span>

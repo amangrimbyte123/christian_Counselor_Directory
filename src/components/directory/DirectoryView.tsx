@@ -33,7 +33,7 @@ export async function DirectoryView({ params, fixed = {}, hide = [], basePath }:
       <section aria-labelledby="results-heading">
         <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
           <h2 id="results-heading" className="font-sans text-base font-medium text-ink-700" aria-live="polite">
-            {result.total === 0 ? "No therapists found" : <>Showing <strong>{from}–{to}</strong> of <strong>{result.total}</strong> {result.total === 1 ? "therapist" : "therapists"}</>}
+            {result.total === 0 ? "No counselors found" : <>Showing <strong>{from}–{to}</strong> of <strong>{result.total}</strong> {result.total === 1 ? "counselor" : "counselors"}</>}
           </h2>
           {result.total > 1 && <SortSelect value={params.sort} options={sortOptions} />}
         </div>
@@ -41,14 +41,14 @@ export async function DirectoryView({ params, fixed = {}, hide = [], basePath }:
         {result.total === 0 ? (
           <div className="rounded-xl2 border border-dashed border-sand-300 bg-white p-8 text-center sm:p-12">
             <Icon name="search" className="mx-auto h-10 w-10 text-brand-600" />
-            <h3 className="mt-4 text-2xl">No therapists match those filters</h3>
+            <h3 className="mt-4 text-2xl">No counselors match those filters</h3>
             <p className="mx-auto mt-2 max-w-md text-ink-600">
               Try removing a filter, checking the spelling of a city or ZIP code, or choosing online sessions, which widens your options.
             </p>
             <div className="mt-6 flex flex-wrap justify-center gap-3">
               {filtered && <Link href={basePath} className={buttonClass("primary")}>Clear all filters</Link>}
-              <Link href="/online-therapy/" className={buttonClass("secondary")}>Browse online therapists</Link>
-              <Link href="/therapists/" className={buttonClass("ghost")}>See all therapists</Link>
+              <Link href="/online-therapy/" className={buttonClass("secondary")}>Browse online counselors</Link>
+              <Link href="/therapists/" className={buttonClass("ghost")}>See all counselors</Link>
             </div>
           </div>
         ) : (

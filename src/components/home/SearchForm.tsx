@@ -13,11 +13,11 @@ export async function SearchForm() {
   const specs = await listSpecialties();
   const label = "mb-1.5 flex items-center gap-1.5 text-sm font-semibold text-ink-900";
   return (
-    <form action="/therapists/" method="get" role="search" aria-label="Find a therapist"
+    <form action="/therapists/" method="get" role="search" aria-label="Find a counselor"
       className="rounded-[1.5rem] border border-sand-200 bg-white p-4 shadow-lift sm:p-5">
       <div className="grid gap-3 sm:grid-cols-2">
         <div>
-          <label htmlFor="hs-specialty" className={label}><Icon name="heart" className="h-4 w-4 text-brand-600" />What would you like support with?</label>
+          <label htmlFor="hs-specialty" className={label}><Icon name="heart" className="h-4 w-4 text-brand-600" />What would you like help with as a couple?</label>
           <select id="hs-specialty" name="specialty" className="input h-12" defaultValue="">
             <option value="">I&apos;m not sure yet / anything</option>
             {specs.map((s) => <option key={s.slug} value={s.slug}>{s.name}</option>)}
@@ -44,7 +44,7 @@ export async function SearchForm() {
           </div>
         </fieldset>
         <Button type="submit" size="lg" className="h-12 w-full whitespace-nowrap sm:w-auto">
-          <Icon name="search" className="h-5 w-5" /> Find a therapist
+          <Icon name="search" className="h-5 w-5" /> Find a counselor
         </Button>
       </div>
     </form>

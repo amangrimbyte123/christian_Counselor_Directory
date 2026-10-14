@@ -7,20 +7,20 @@ import { Icon } from "@/components/ui/Icon";
 import { buttonClass } from "@/components/ui/Button";
 
 export const NAV = [
-  { href: "/therapists/", label: "Find a therapist" },
-  { href: "/specialties/", label: "Specialties" },
+  { href: "/therapists/", label: "Find a counselor" },
+  { href: "/specialties/", label: "Services" },
   { href: "/locations/", label: "Locations" },
-  { href: "/online-therapy/", label: "Online therapy" },
+  { href: "/online-therapy/", label: "Online counseling" },
   { href: "/blog/", label: "Resources" },
 ];
 
 export function Logo() {
   return (
-    <Link href="/" className="flex items-center gap-2.5" aria-label="CounselorDirectory home">
+    <Link href="/" className="flex items-center gap-2.5" aria-label="Christian Couples Directory home">
       <span className="grid h-9 w-9 place-items-center rounded-xl bg-brand-700 text-white">
-        <Icon name="leaf" className="h-5 w-5" />
+        <Icon name="heart" className="h-5 w-5" />
       </span>
-      <span className="font-serif text-xl font-semibold text-ink-900">Counselor<span className="text-brand-700">Directory</span></span>
+      <span className="font-serif text-xl font-semibold text-ink-900">Christian<span className="text-brand-700">Couples</span></span>
     </Link>
   );
 }
@@ -47,8 +47,8 @@ export function Header() {
           })}
         </nav>
         <div className="hidden items-center gap-2 lg:flex">
-          <Link href="/for-therapists/" className="px-3 py-2 text-[15px] font-medium text-ink-700 hover:text-brand-800">For therapists</Link>
-          <Link href="/therapists/" className={buttonClass("primary", "sm")}>Search therapists</Link>
+          <Link href="/for-therapists/" className="px-3 py-2 text-[15px] font-medium text-ink-700 hover:text-brand-800">For counselors</Link>
+          <Link href="/therapists/" className={buttonClass("primary", "sm")}>Search counselors</Link>
         </div>
         <button type="button" onClick={() => setOpenAt(open ? null : pathname)} aria-expanded={open} aria-controls="mobile-nav"
           className="grid h-11 w-11 place-items-center rounded-full text-ink-900 hover:bg-brand-50 lg:hidden">
@@ -64,8 +64,8 @@ export function Header() {
                 <Link href={n.href} className="block rounded-lg px-3 py-3 text-lg font-medium text-ink-900 hover:bg-brand-50">{n.label}</Link>
               </li>
             ))}
-            <li><Link href="/for-therapists/" className="block rounded-lg px-3 py-3 text-lg font-medium text-ink-900 hover:bg-brand-50">For therapists</Link></li>
-            <li className="pt-2"><Link href="/therapists/" className={buttonClass("primary", "md", "w-full")}>Search therapists</Link></li>
+            <li><Link href="/for-therapists/" className="block rounded-lg px-3 py-3 text-lg font-medium text-ink-900 hover:bg-brand-50">For counselors</Link></li>
+            <li className="pt-2"><Link href="/therapists/" className={buttonClass("primary", "md", "w-full")}>Search counselors</Link></li>
           </ul>
         </nav>
       )}

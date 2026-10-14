@@ -22,11 +22,11 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const t = await getTherapist((await params).slug);
-  if (!t) return { title: "Therapist not found", robots: { index: false } };
+  if (!t) return { title: "Counselor not found", robots: { index: false } };
   const st = stateLabel(t.state);
   return buildMetadata({
     title: `${t.name}, ${t.credentials.split(",")[0]} | ${t.title} in ${cityLabel(t.city)}, ${st?.abbr} (Sample)`,
-    description: `Sample profile: ${t.statement} Specialties: ${t.specialties.slice(0, 3).map(specialtyLabel).join(", ")}. Demo data, not a real clinician.`,
+    description: `Sample profile: ${t.statement} Focus: ${t.specialties.slice(0, 3).map(specialtyLabel).join(", ")}. Demo data, not a real clinician.`,
     path: `/therapists/${t.slug}/`,
     // Demo profiles are fictional. Keep them out of search indexes until real, verified data replaces them.
     noindex: t.verified === false,
@@ -51,7 +51,7 @@ export default async function TherapistPage({ params }: Props) {
     <>
       <PageHeader
         crumbs={[
-          { name: "Therapists", href: "/therapists/" },
+          { name: "Counselors", href: "/therapists/" },
           { name: cityLabel(t.city), href: `/locations/${t.state}/${t.city}/` },
           { name: t.name, href: `/therapists/${t.slug}/` },
         ]}
@@ -88,7 +88,7 @@ export default async function TherapistPage({ params }: Props) {
           </section>
 
           <section aria-labelledby="focus">
-            <h2 id="focus" className="text-3xl">Specialties &amp; approach</h2>
+            <h2 id="focus" className="text-3xl">Services &amp; approach</h2>
             <h3 className="mt-5 font-sans text-sm font-semibold uppercase tracking-wider text-ink-600">Areas of specialization</h3>
             <ul className="mt-2 flex flex-wrap gap-2">
               {t.specialties.map((s) => (
@@ -133,14 +133,14 @@ export default async function TherapistPage({ params }: Props) {
       {related.length > 0 && (
         <section className="border-t border-sand-200 bg-sand-100 py-14" aria-labelledby="related">
           <div className="container-page">
-            <SectionHeading title="Therapists with similar focus" intro="Based on shared specialties and location." />
-            <h2 id="related" className="sr-only">Related therapists</h2>
+            <SectionHeading title="Counselors with similar focus" intro="Based on shared services and location." />
+            <h2 id="related" className="sr-only">Related counselors</h2>
             <ul className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {related.map((r) => <li key={r.id}><TherapistCard t={r} /></li>)}
             </ul>
             <p className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-[15px]">
-              <Link className="font-medium text-brand-800 underline" href={`/locations/${t.state}/${t.city}/`}>All therapists in {cityLabel(t.city)}</Link>
-              <Link className="font-medium text-brand-800 underline" href={`/specialties/${t.specialties[0]}/`}>{specialtyLabel(t.specialties[0])} therapists</Link>
+              <Link className="font-medium text-brand-800 underline" href={`/locations/${t.state}/${t.city}/`}>All counselors in {cityLabel(t.city)}</Link>
+              <Link className="font-medium text-brand-800 underline" href={`/specialties/${t.specialties[0]}/`}>{specialtyLabel(t.specialties[0])} counselors</Link>
               <Link className="font-medium text-brand-800 underline" href="/therapists/">Back to all results</Link>
             </p>
           </div>

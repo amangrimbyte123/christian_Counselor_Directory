@@ -3,11 +3,11 @@ import { Icon } from "@/components/ui/Icon";
 import { SectionHeading } from "@/components/ui/Misc";
 
 const TYPES = [
-  { href: "/therapists/", icon: "user", title: "Individual therapy", text: "One-to-one sessions focused on you." },
-  { href: "/specialties/relationship-counseling/", icon: "heart", title: "Couples therapy", text: "Support for partners, together." },
-  { href: "/specialties/family-therapy/", icon: "users", title: "Family therapy", text: "Space for every voice at home." },
-  { href: "/specialties/teen-therapy/", icon: "sprout", title: "Teens & children", text: "Specialists in younger clients." },
-  { href: "/online-therapy/", icon: "video", title: "Online therapy", text: "Secure video, from wherever you are." },
+  { href: "/specialties/christian-marriage-counseling/", icon: "heart", title: "Marriage counseling", text: "Support for husbands and wives, together." },
+  { href: "/specialties/christian-premarital-counseling/", icon: "sprout", title: "Premarital counseling", text: "Preparation for engaged couples." },
+  { href: "/specialties/christian-marriage-reconciliation/", icon: "repeat", title: "Marriage restoration", text: "When you're separated or close to it." },
+  { href: "/specialties/faith-and-spiritual-connection/", icon: "cross", title: "Faith-integrated sessions", text: "Prayer and scripture, if you both want them." },
+  { href: "/online-therapy/", icon: "video", title: "Online couples counseling", text: "Secure video, together from home." },
   { href: "/therapists/?format=in-person", icon: "home", title: "In-person counseling", text: "Meet face to face in a local office." },
 ];
 
@@ -16,8 +16,8 @@ export function SupportTypes() {
     <section className="section bg-sand-100" aria-labelledby="support-types">
       <div className="container-page">
         <div className="flex flex-wrap items-end justify-between gap-6" data-reveal>
-          <SectionHeading id="support-types" eyebrow="Ways to meet" title="Find the right type of support"
-            intro="Therapy can look different depending on who it's for and how you'd like to meet." />
+          <SectionHeading id="support-types" eyebrow="Ways to meet" title="Find the right kind of couples support"
+            intro="Christian couples counseling can look different depending on your season of marriage and how you'd like to meet." />
         </div>
         <ul className="mt-10 grid overflow-hidden rounded-xl2 border border-sand-200 bg-sand-200 sm:grid-cols-2 lg:grid-cols-3" style={{ gap: 1 }} data-reveal>
           {TYPES.map((t) => (

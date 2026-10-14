@@ -5,8 +5,8 @@ import { buildMetadata } from "@/lib/seo";
 import { listPosts } from "@/lib/repository";
 
 export const metadata = buildMetadata({
-  title: "Mental Health Resources and Guides",
-  description: "Plain-language guides on finding a therapist, understanding treatment approaches and looking after your mental health.",
+  title: "Christian Marriage Resources and Guides",
+  description: "Plain-language guides for Christian couples on finding a marriage counselor, couples therapy approaches, premarital preparation and rebuilding trust.",
   path: "/blog/",
 });
 
@@ -18,8 +18,8 @@ export default async function BlogPage() {
   const [lead, ...rest] = posts;
   return (
     <>
-      <PageHeader crumbs={[{ name: "Resources", href: "/blog/" }]} title="Mental health resources"
-        intro="Plain-language guides to help you find the right support. General information only, not medical advice." />
+      <PageHeader crumbs={[{ name: "Resources", href: "/blog/" }]} title="Christian marriage resources"
+        intro="Plain-language guides to help you and your spouse find the right support. General information only, not medical advice." />
       <div className="container-page py-10">
         <Link href={`/blog/${lead.slug}/`} className="group grid gap-6 rounded-xl2 border border-sand-200 bg-white p-6 shadow-card hover:shadow-lift md:grid-cols-[1fr_1.4fr] md:p-8">
           <div className="grid min-h-40 place-items-center rounded-xl bg-gradient-to-br from-brand-100 to-sage-100 font-serif text-5xl text-brand-700" aria-hidden="true">Start here</div>

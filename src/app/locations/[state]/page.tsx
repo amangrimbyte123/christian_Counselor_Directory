@@ -17,7 +17,7 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
   const s = await getState((await params).state);
   if (!s) return { title: "Location not found", robots: { index: false } };
   return listingMetadata({
-    title: `Therapists and Counselors in ${s.name}`,
+    title: `Christian Couples Counselors in ${s.name}`,
     description: `Browse ${s.count} sample therapists in ${s.name}${s.cities.length ? `, including ${s.cities.slice(0, 3).map((c) => c.name).join(", ")}` : ""}. Filter by specialty, language and session type.`,
     path: `/locations/${s.slug}/`,
     params: parseSearchParams(await searchParams),
@@ -34,8 +34,8 @@ export default async function StatePage({ params, searchParams }: Props) {
   return (
     <>
       <PageHeader crumbs={[{ name: "Locations", href: "/locations/" }, { name: s.name, href: `/locations/${s.slug}/` }]}
-        title={`Therapists and counselors in ${s.name}`}
-        intro={`${s.count} sample profiles in ${s.name}. Choose a city, or filter the full list below. Online sessions are also available from many therapists.`}>
+        title={`Christian couples counselors in ${s.name}`}
+        intro={`${s.count} sample profiles in ${s.name}. Choose a city, or filter the full list below. Online sessions are also available from many counselors.`}>
         <ul className="flex flex-wrap gap-2" aria-label={`Cities in ${s.name}`}>
           {s.cities.map((c) => (
             <li key={c.slug}><Link href={`/locations/${s.slug}/${c.slug}/`} className="inline-flex rounded-full border border-brand-200 bg-white px-4 py-2 text-sm font-medium text-brand-800 hover:bg-brand-50">{c.name} ({c.count})</Link></li>

@@ -47,9 +47,9 @@ export default async function PostPage({ params }: Props) {
         </article>
         <aside className="space-y-8 lg:sticky lg:top-24 lg:self-start">
           <div className="rounded-xl2 border border-brand-200 bg-brand-50 p-6">
-            <h2 className="text-xl">Ready to look for support?</h2>
-            <p className="mb-4 mt-2 text-ink-600">Browse sample profiles by specialty and location.</p>
-            <ButtonLink href="/therapists/" className="w-full">Find a therapist</ButtonLink>
+            <h2 className="text-xl">Ready to find a counselor?</h2>
+            <p className="mb-4 mt-2 text-ink-600">Browse sample Christian couples counselors by service and location.</p>
+            <ButtonLink href="/therapists/" className="w-full">Find a counselor</ButtonLink>
             <p className="mt-4 flex flex-wrap gap-2">
               {p.relatedSpecialties.map((s) => <Link key={s} href={`/specialties/${s}/`} className="rounded-full border border-brand-200 bg-white px-3 py-1 text-sm text-brand-800 hover:bg-brand-100">{specialtyLabel(s)}</Link>)}
             </p>

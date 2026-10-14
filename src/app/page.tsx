@@ -16,20 +16,20 @@ import { absoluteUrl, SITE } from "@/lib/site";
 import { countBySpecialty, countOnline, listFeaturedTherapists, listLocations, listPosts, listSpecialties } from "@/lib/repository";
 
 export const metadata = buildMetadata({
-  title: "Find a Therapist, Counselor or Psychologist",
-  description: "Explore therapists and counselors by what you're going through, your location, and online or in-person sessions. A calm, honest directory (demo with sample data).",
+  title: "Find a Christian Couples Counselor",
+  description: "Find Christian couples and marriage counselors by what you're facing together, your location, and online or in-person sessions. A calm, honest directory (demo with sample data).",
   path: "/",
 });
 // buildMetadata title for "/" should not be templated twice
-metadata.title = { absolute: `${SITE.name}: Find a therapist who fits` };
+metadata.title = { absolute: `${SITE.name}: ${SITE.tagline}` };
 
 // Kept distinct from the "What to expect" questions above it
 const FAQS = [
-  { q: "Do I need a diagnosis to start therapy?", a: "No. You can start therapy for any reason: stress, life changes, relationships, or simply wanting to understand yourself better." },
-  { q: "How much does therapy cost?", a: "It varies by location, profession and session length. Each profile shows a fee range up front, and some therapists list a sliding scale. Ask about insurance or reimbursement directly, as coverage differs between plans." },
+  { q: "Do we need to be in crisis to start couples counseling?", a: "No. Couples come for many reasons: recurring arguments, a big life change, preparing for marriage, or simply wanting to grow closer to each other and to God." },
+  { q: "How much does couples counseling cost?", a: "It varies by location, profession and session length. Each profile shows a fee range up front, and some counselors list a sliding scale. Ask about insurance or reimbursement directly, as coverage differs between plans." },
   { q: "Is my search private?", a: "You can browse and search without an account, and we don't ask about your health to show results. Search filters only appear in the page address so you can share or bookmark them." },
-  { q: "Are the therapists on this site real?", a: "No. This is a demo. All profiles are fictional sample data and none are verified. See our trust and safety page for how to verify real clinicians." },
-  { q: "What if I am in crisis?", a: "In the US call or text 988, or call 911. This directory is not an emergency service." },
+  { q: "Are the counselors on this site real?", a: "No. This is a demo. All profiles are fictional sample data and none are verified. See our trust and safety page for how to verify real clinicians." },
+  { q: "What if I am in crisis or feel unsafe at home?", a: "In the US call or text 988, or call 911. For domestic violence, call the National Domestic Violence Hotline at 1-800-799-7233. This directory is not an emergency service." },
 ];
 
 export default async function HomePage() {

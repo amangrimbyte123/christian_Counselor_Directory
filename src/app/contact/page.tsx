@@ -3,7 +3,7 @@ import { RequestForm } from "@/components/therapist/RequestForm";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Contact CounselorDirectory",
+  title: "Contact Christian Couples Directory",
   description: "Questions about the directory? Send us a message. This demo form validates input but does not store or send it.",
   path: "/contact/",
 });

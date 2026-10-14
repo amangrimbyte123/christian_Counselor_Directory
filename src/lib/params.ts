@@ -2,12 +2,11 @@ import type { Profession, SearchParams } from "@/types";
 
 type RawParams = Record<string, string | string[] | undefined>;
 
-const PROFESSIONS: Profession[] = ["psychologist", "psychiatrist", "counselor", "social-worker", "marriage-family-therapist"];
+const PROFESSIONS: Profession[] = ["marriage-family-therapist", "counselor", "psychologist", "social-worker"];
 const SORTS: SearchParams["sort"][] = ["recommended", "name", "fee-low", "fee-high", "experience"];
 
 export const PROFESSION_LABELS: Record<Profession, string> = {
   psychologist: "Psychologist",
-  psychiatrist: "Psychiatrist",
   counselor: "Counselor",
   "social-worker": "Social worker",
   "marriage-family-therapist": "Marriage & family therapist",

@@ -5,16 +5,16 @@ import { SectionHeading } from "@/components/ui/Misc";
 import { GuidedBrowse } from "./GuidedBrowse";
 import { revealDelay } from "@/lib/motion";
 
-/** Everyday wording for each topic; each links to its existing specialty page. */
+/** Everyday wording for each service; each links to its service page. */
 const TOPICS = [
-  { slug: "anxiety-therapy", title: "Anxiety & stress", text: "Racing thoughts, worry that won't switch off, or feeling tense most days.", tone: "bg-brand-50 text-brand-700" },
-  { slug: "depression-therapy", title: "Low mood & depression", text: "When things feel flat, heavy, or harder to enjoy than they used to.", tone: "bg-sand-100 text-ink-700" },
-  { slug: "relationship-counseling", title: "Relationships & couples", text: "Communication, conflict, trust, or feeling disconnected from a partner.", tone: "bg-coral-50 text-coral-700" },
-  { slug: "family-therapy", title: "Family", text: "Navigating family tension, parenting challenges or changes at home.", tone: "bg-sage-100 text-sage-600" },
-  { slug: "trauma-therapy", title: "Trauma & emotional healing", text: "Making peace with difficult experiences, at a pace that feels safe.", tone: "bg-brand-50 text-brand-700" },
-  { slug: "life-transitions-therapy", title: "Personal growth & life changes", text: "New chapters, big decisions, or simply wanting to understand yourself.", tone: "bg-sand-100 text-ink-700" },
-  { slug: "grief-counseling", title: "Grief & loss", text: "Support after losing someone or something important, at your own pace.", tone: "bg-sage-100 text-sage-600" },
-  { slug: "christian-counseling", title: "Faith & Christian counseling", text: "Therapy that welcomes your Christian faith, as much or as little as you like.", tone: "bg-coral-50 text-coral-700" },
+  { slug: "christian-marriage-counseling", title: "Christian marriage counseling", text: "Strengthening your marriage with faith welcome in the room, as much or as little as you like.", tone: "bg-brand-50 text-brand-700" },
+  { slug: "christian-couples-communication", title: "Communication & conflict", text: "The same arguments on repeat, or conversations that shut down too fast.", tone: "bg-sand-100 text-ink-700" },
+  { slug: "christian-affair-recovery", title: "Infidelity & trust repair", text: "Healing after an affair, secrecy or betrayal, and deciding what comes next.", tone: "bg-coral-50 text-coral-700" },
+  { slug: "christian-premarital-counseling", title: "Premarital counseling", text: "Preparing for marriage by talking through money, family, roles and faith.", tone: "bg-sage-100 text-sage-600" },
+  { slug: "christian-intimacy-counseling", title: "Intimacy & connection", text: "Feeling like roommates, or wanting to rekindle closeness and affection.", tone: "bg-brand-50 text-brand-700" },
+  { slug: "christian-marriage-reconciliation", title: "Separation & reconciliation", text: "When divorce has been mentioned, or you're living apart and unsure.", tone: "bg-sand-100 text-ink-700" },
+  { slug: "christian-couples-life-transitions", title: "Seasons of marriage", text: "New baby, blended family, grief or an empty nest: changing together.", tone: "bg-sage-100 text-sage-600" },
+  { slug: "faith-and-spiritual-connection", title: "Faith & spiritual connection", text: "Growing together spiritually, even when you see faith differently.", tone: "bg-coral-50 text-coral-700" },
 ];
 
 export function TopicGrid({ specialties, counts }: { specialties: Specialty[]; counts: Record<string, number> }) {
@@ -23,8 +23,8 @@ export function TopicGrid({ specialties, counts }: { specialties: Specialty[]; c
     <section className="section" aria-labelledby="topics">
       <div className="container-page grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-14">
         <div data-reveal>
-          <SectionHeading id="topics" eyebrow="Explore by topic" title={<>What would you like <em className="text-brand-700">support</em> with?</>}
-            intro="You don't need a diagnosis or the perfect words. Start with whatever is on your mind, and learn how therapy can help." />
+          <SectionHeading id="topics" eyebrow="Explore by need" title={<>What would you like <em className="text-brand-700">help</em> with as a couple?</>}
+            intro="You don't need to be in crisis or have the perfect words. Start with whatever is on your hearts, and learn how Christian couples counseling can help." />
           <div className="mt-8"><GuidedBrowse specialties={specialties.map(({ slug, name, summary }) => ({ slug, name, summary }))} /></div>
         </div>
 
@@ -40,7 +40,7 @@ export function TopicGrid({ specialties, counts }: { specialties: Specialty[]; c
                     <h3 className="mt-5 text-xl group-hover:text-brand-800">{t.title}</h3>
                     <p className="mt-2 flex-1 text-[15px] leading-relaxed text-ink-600">{t.text}</p>
                     <span className="mt-5 flex items-center justify-between text-sm">
-                      <span className="text-ink-500">{counts[t.slug] ?? 0} sample therapists</span>
+                      <span className="text-ink-500">{counts[t.slug] ?? 0} sample counselors</span>
                       <span className="inline-flex items-center gap-1 font-semibold text-brand-800">Explore <Icon name="arrow" className="h-4 w-4 transition-transform group-hover:translate-x-1" /></span>
                     </span>
                   </Link>
@@ -49,7 +49,7 @@ export function TopicGrid({ specialties, counts }: { specialties: Specialty[]; c
             })}
           </ul>
           <p className="mt-6 text-center text-ink-600 sm:text-left">
-            Looking for something else? <Link href="/specialties/" className="link-arrow">See all {specialties.length} topics <Icon name="arrow" className="h-4 w-4" /></Link>
+            Want the full picture? <Link href="/specialties/" className="link-arrow">See all {specialties.length} services <Icon name="arrow" className="h-4 w-4" /></Link>
           </p>
         </div>
       </div>

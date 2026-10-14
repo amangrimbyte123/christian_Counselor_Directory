@@ -6,24 +6,24 @@ import { revealDelay } from "@/lib/motion";
 /** Short, general answers for first-timers, each pointing to a fuller guide. Not medical advice. */
 export const BASICS = [
   {
-    q: "How do I find the right therapist?",
-    a: "Look for someone who works with what you're facing, then consider practical fit: location or online, fees and availability. Feeling comfortable with them matters most, so a short first call is a good way to check.",
-    href: "/blog/how-to-find-a-therapist/", cta: "Step-by-step guide",
+    q: "How do we find the right Christian couples counselor?",
+    a: "Look for someone trained in couples therapy who works with what you're facing, then consider how they integrate faith, location or online, fees and availability. Feeling comfortable with them as a couple matters most, so a short first call is a good way to check.",
+    href: "/blog/how-to-find-a-christian-marriage-counselor/", cta: "Step-by-step guide",
   },
   {
-    q: "What happens in a first therapy session?",
-    a: "Usually a conversation: what brings you in, a bit of background, and what you'd like to change. You can ask questions too, about their approach, confidentiality or how long therapy might take.",
-    href: "/blog/what-to-expect-in-your-first-therapy-session/", cta: "What to expect",
+    q: "What happens in a first couples session?",
+    a: "Usually a conversation: what brings you in, a bit of your story together, and what you'd each like to change. You can ask questions too, about their approach, how they include faith, or how long counseling might take.",
+    href: "/blog/what-to-expect-in-your-first-couples-counseling-session/", cta: "What to expect",
   },
   {
-    q: "What's the difference between a therapist and a counselor?",
-    a: "The titles overlap. Licensed counselors, social workers, marriage and family therapists and psychologists all provide talk therapy; their training and licences differ. Psychologists can also do formal testing.",
-    href: "/blog/therapist-vs-counselor-vs-psychologist/", cta: "Titles explained",
+    q: "Should we see a licensed therapist or a pastoral counselor?",
+    a: "Licensed marriage and family therapists and counselors are regulated by a state board; many pastoral counselors are not. Both can be supportive, and many couples combine a licensed counselor with support from their church.",
+    href: "/blog/licensed-therapist-vs-pastoral-counselor/", cta: "Options explained",
   },
   {
-    q: "Can I speak to a therapist online?",
-    a: "Yes. Many therapists offer secure video sessions, and research suggests online therapy can work well for many common concerns. Therapists generally need to be licensed in the state where you live.",
-    href: "/blog/online-therapy-vs-in-person/", cta: "Online vs in person",
+    q: "Can we do couples counseling online?",
+    a: "Yes. Many counselors offer secure video sessions you can join together from home. Counselors generally need to be licensed in the state where you live.",
+    href: "/blog/online-vs-in-person-christian-couples-counseling/", cta: "Online vs in person",
   },
 ];
 
@@ -32,7 +32,7 @@ export function TherapyBasics() {
     <section className="section" aria-labelledby="basics">
       <div className="container-page">
         <div data-reveal>
-          <SectionHeading id="basics" align="center" eyebrow="New to therapy?" title="What to expect from therapy"
+          <SectionHeading id="basics" align="center" eyebrow="New to couples counseling?" title="What to expect from couples counseling"
             intro="It's normal to have questions before you start. Here are honest, plain-language answers to the ones we hear most." />
         </div>
         <ul className="mx-auto mt-12 grid max-w-5xl gap-5 md:grid-cols-2">

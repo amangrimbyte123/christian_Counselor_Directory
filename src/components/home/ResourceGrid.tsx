@@ -11,8 +11,8 @@ export function ResourceGrid({ posts }: { posts: Post[] }) {
     <section className="section bg-sand-100" aria-labelledby="resources">
       <div className="container-page">
         <div className="flex flex-wrap items-end justify-between gap-6" data-reveal>
-          <SectionHeading id="resources" eyebrow="Learn" title="Helpful psychology resources"
-            intro="Practical, plain-language guides to understanding your mind and getting support. General information only, not medical advice." />
+          <SectionHeading id="resources" eyebrow="Learn" title="Christian marriage resources"
+            intro="Practical, plain-language guides for Christian couples on marriage, faith and getting support. General information only, not medical advice." />
           <Link href="/blog/" className="link-arrow">All articles <Icon name="arrow" className="h-4 w-4" /></Link>
         </div>
         <div className="mt-10 grid gap-5 lg:grid-cols-3">

@@ -12,16 +12,16 @@ import { countOnline } from "@/lib/repository";
 type Props = { searchParams: Promise<Record<string, string | string[] | undefined>> };
 
 const FAQS = [
-  { q: "Is online therapy as effective as in-person therapy?", a: "For many common concerns such as anxiety and depression, research finds video therapy can be comparably effective. Fit with your therapist matters more than the format." },
-  { q: "Can I see any therapist online from anywhere?", a: "Not always. Therapists generally need to be licensed in the state where you are located during the session. Always confirm this before booking." },
-  { q: "What do I need for a video session?", a: "A private space, a stable internet connection, a phone, tablet or computer with a camera, and headphones if possible." },
-  { q: "Is online therapy private?", a: "Ask your therapist which platform they use and how it protects your data. Reputable clinicians use secure, privacy-compliant video tools." },
+  { q: "Does online couples counseling work?", a: "Many couples find video sessions work well, and research on online couples therapy is encouraging. Fit with your counselor matters more than the format." },
+  { q: "Can we see any counselor online from anywhere?", a: "Not always. Counselors generally need to be licensed in the state where you are located during the session. Always confirm this before booking." },
+  { q: "What do we need for a video session together?", a: "A private space where children won't overhear, a stable internet connection, and one computer or tablet with a camera you can both sit in front of." },
+  { q: "Is online couples counseling private?", a: "Ask your counselor which platform they use and how it protects your data. Reputable clinicians use secure, privacy-compliant video tools." },
 ];
 
 export async function generateMetadata({ searchParams }: Props): Promise<Metadata> {
   return listingMetadata({
-    title: "Online Therapy: Find Therapists Offering Video Sessions",
-    description: "Browse therapists and counselors offering online therapy by video. Filter by specialty, language and fee. Sample data for demonstration.",
+    title: "Online Christian Couples Counseling: Counselors Offering Video Sessions",
+    description: "Browse Christian couples counselors offering online marriage counseling by video. Filter by service, language and fee. Sample data for demonstration.",
     path: "/online-therapy/",
     params: parseSearchParams(await searchParams),
     ignore: ["format"],
@@ -37,10 +37,10 @@ export default async function OnlinePage({ searchParams }: Props) {
   return (
     <>
       <JsonLd data={faqJsonLd(FAQS)} />
-      <PageHeader crumbs={[{ name: "Online therapy", href: "/online-therapy/" }]} title="Online therapy"
-        intro={`${count} sample therapists offer secure video sessions. Meet from home, on your schedule, without a commute.`}>
+      <PageHeader crumbs={[{ name: "Online counseling", href: "/online-therapy/" }]} title="Online couples counseling"
+        intro={`${count} sample counselors offer secure video sessions for couples. Meet together from home, on your schedule, without a commute.`}>
         <ul className="grid gap-3 sm:grid-cols-3">
-          {[["video", "Secure video sessions"], ["clock", "Flexible scheduling"], ["globe", "Wider choice of specialists"]].map(([i, t]) => (
+          {[["video", "Secure video sessions"], ["clock", "Flexible scheduling"], ["globe", "Wider choice of Christian counselors"]].map(([i, t]) => (
             <li key={t} className="flex items-center gap-3 rounded-xl bg-white p-3.5 text-ink-700 shadow-card"><Icon name={i} className="h-5 w-5 text-brand-700" />{t}</li>
           ))}
         </ul>
@@ -48,7 +48,7 @@ export default async function OnlinePage({ searchParams }: Props) {
       <div className="container-page py-10">
         <DirectoryView params={sp} fixed={{ format: "online" }} hide={["format"]} basePath="/online-therapy/" />
         <section className="mt-16 max-w-3xl" aria-labelledby="faq">
-          <h2 id="faq" className="mb-4 text-3xl">Online therapy: common questions</h2>
+          <h2 id="faq" className="mb-4 text-3xl">Online couples counseling: common questions</h2>
           <Faq items={FAQS} />
         </section>
       </div>
