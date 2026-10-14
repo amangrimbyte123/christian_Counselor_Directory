@@ -1,5 +1,5 @@
 # Production image for Dokploy (Build Type: Dockerfile)
-FROM node:22-slim AS base
+FROM node:24-slim AS base
 ENV NEXT_TELEMETRY_DISABLED=1
 
 # 1. Install dependencies
