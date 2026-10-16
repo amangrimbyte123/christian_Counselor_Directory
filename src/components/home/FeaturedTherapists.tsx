@@ -10,8 +10,8 @@ export function FeaturedTherapists({ therapists }: { therapists: Therapist[] }) 
     <section className="section" aria-labelledby="featured">
       <div className="container-page">
         <div className="flex flex-wrap items-end justify-between gap-6" data-reveal>
-          <SectionHeading id="featured" eyebrow="Meet the people" title={<>Get to know a counselor <em className="text-brand-700">before</em> you reach out</>}
-            intro="Profiles show what matters up front: marriage focus areas, how they work, where they meet and what sessions cost. These are fictional sample profiles, shown so you can see how the directory works." />
+          <SectionHeading id="featured" eyebrow="Highly rated" title={<>Get to know a practice <em className="text-brand-700">before</em> you reach out</>}
+            intro="A few of the best-reviewed practices on Google Maps across the country. Each listing shows the address, rating, hours and how to get in touch." />
           <Link href="/therapists/" className="link-arrow">Browse all counselors <Icon name="arrow" className="h-4 w-4" /></Link>
         </div>
         <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

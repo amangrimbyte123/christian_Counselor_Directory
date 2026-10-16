@@ -16,10 +16,10 @@ export default async function LocationsPage() {
   return (
     <>
       <PageHeader crumbs={[{ name: "Locations", href: "/locations/" }]} title="Find a counselor near you"
-        intro="Choose a state to see its cities. Only locations with at least two sample profiles are listed. Prefer not to travel? Online couples counseling works from anywhere a counselor is licensed to practice." />
+        intro="Choose a state to see its cities. Cities with at least two practices are listed. Prefer not to travel? Many practices also offer online sessions anywhere in the state where they are licensed." />
       <div className="container-page space-y-12 py-10">
         <Link href="/online-therapy/" className="flex items-center justify-between rounded-xl2 border border-brand-200 bg-brand-50 p-5 text-brand-800 hover:bg-brand-100">
-          <span><strong className="block text-lg">Looking for online counseling?</strong>See every counselor offering video sessions.</span>
+          <span><strong className="block text-lg">Looking for online counseling?</strong>How video sessions work and what to ask.</span>
           <span aria-hidden="true">→</span>
         </Link>
         {REGIONS.map((r) => {
@@ -32,7 +32,7 @@ export default async function LocationsPage() {
                 {inRegion.map((s) => (
                   <li key={s.slug} className="rounded-xl2 border border-sand-200 bg-white p-5 shadow-card">
                     <h3 className="text-xl"><Link className="hover:text-brand-800 hover:underline" href={`/locations/${s.slug}/`}>{s.name}</Link></h3>
-                    <p className="text-sm text-ink-600">{s.count} sample counselors</p>
+                    <p className="text-sm text-ink-600">{s.count} {s.count === 1 ? "practice" : "practices"}</p>
                     <ul className="mt-3 flex flex-wrap gap-2">
                       {s.cities.map((c) => (
                         <li key={c.slug}><Link href={`/locations/${s.slug}/${c.slug}/`} className="inline-flex rounded-full border border-sand-300 px-3 py-1 text-sm hover:bg-brand-50">{c.name} ({c.count})</Link></li>

@@ -19,7 +19,8 @@ export function Badge({ children, tone = "neutral", icon }: { children: ReactNod
 
 /** Generated placeholder avatar (initials on a soft gradient). Clearly not a real photo. */
 export function Avatar({ name, hue, size = 64 }: { name: string; hue: number; size?: number }) {
-  const initials = name.split(" ").map((p) => p[0]).slice(0, 2).join("");
+  // Skip words like "&" or "-" so "Kids & Families" gives "KF"
+  const initials = name.split(/\s+/).filter((p) => /^[a-z0-9]/i.test(p)).map((p) => p[0].toUpperCase()).slice(0, 2).join("");
   const id = `av${hue}`;
   return (
     <svg width={size} height={size} viewBox="0 0 64 64" role="img" aria-label={`Placeholder avatar for ${name}`} className="shrink-0 rounded-full ring-4 ring-white">
@@ -64,11 +65,24 @@ export function Faq({ items }: { items: { q: string; a: string }[] }) {
   );
 }
 
-export function DemoNotice({ children }: { children?: ReactNode }) {
+/** Where listing data comes from and what has not been checked. */
+export function DataNotice({ children }: { children?: ReactNode }) {
   return (
-    <p className="flex items-start gap-2 rounded-lg border border-coral-100 bg-coral-50 px-3.5 py-2.5 text-sm text-coral-700">
-      <Icon name="info" className="mt-0.5 h-4 w-4 shrink-0" />
-      <span>{children ?? "Sample profile. Demo data only: not a real person, and credentials are not verified."}</span>
+    <p className="flex items-start gap-2 rounded-lg border border-sand-200 bg-sand-50 px-3.5 py-2.5 text-sm text-ink-700">
+      <Icon name="info" className="mt-0.5 h-4 w-4 shrink-0 text-brand-700" />
+      <span>{children}</span>
+    </p>
+  );
+}
+
+/** Google rating, e.g. "4.8 ★ (32 Google reviews)". Renders "No Google reviews yet" when there is none. */
+export function Rating({ rating, count, className = "" }: { rating?: number; count?: number; className?: string }) {
+  if (!rating) return <p className={`text-xs text-ink-500 ${className}`}>No Google reviews yet</p>;
+  return (
+    <p className={`flex items-center gap-1 text-sm text-ink-700 ${className}`}>
+      <Icon name="star" className="h-4 w-4 fill-amber-400 text-amber-500" />
+      <span className="font-semibold text-ink-900">{rating.toFixed(1)}</span>
+      <span className="text-ink-500">({count ?? 0} Google {count === 1 ? "review" : "reviews"})</span>
     </p>
   );
 }

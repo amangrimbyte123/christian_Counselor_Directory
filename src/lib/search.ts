@@ -1,6 +1,6 @@
 import type { SearchParams, SearchResult, Therapist } from "@/types";
 import { cities, states } from "@/data/locations";
-import { specialties } from "@/data/specialties";
+import { ratingScore } from "@/data/therapists";
 
 const norm = (s: string) => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").trim();
 
@@ -11,45 +11,35 @@ const stateOf = (slug: string) => states.find((s) => s.slug === slug);
 export function searchList(all: Therapist[], p: SearchParams, pageSize: number): SearchResult {
   const q = p.q ? norm(p.q) : "";
   const loc = p.location ? norm(p.location) : "";
-  // US ZIP (12345 or 12345-6789): resolve to a city by its 3-digit prefix
+  // US ZIP (12345 or 12345-6789): exact ZIP first, otherwise the same 3-digit area
   const zip = /^(\d{5})(-\d{4})?$/.exec(loc)?.[1];
-  const zipCity = zip ? (cities.find((c) => c.zipPrefixes?.includes(zip.slice(0, 3)))?.slug ?? null) : undefined;
 
   const matched = all.filter((t) => {
     if (p.state && t.state !== p.state) return false;
     if (p.city && t.city !== p.city && !t.serviceAreas.includes(p.city)) return false;
-    if (p.specialty && !t.specialties.includes(p.specialty)) return false;
-    if (p.approach && !t.approaches.includes(p.approach)) return false;
-    if (p.language && !t.languages.includes(p.language)) return false;
     if (p.profession && t.profession !== p.profession) return false;
-    if (p.format && !t.formats.includes(p.format)) return false;
-    if (p.maxFee && t.feeMin > p.maxFee) return false;
 
-    if (zipCity !== undefined) {
-      // A ZIP we can't place matches nobody, so the empty state explains it
-      if (!zipCity || (t.city !== zipCity && !t.serviceAreas.includes(zipCity))) return false;
+    if (zip) {
+      if (t.zip?.slice(0, 3) !== zip.slice(0, 3)) return false;
     } else if (loc) {
       const st = stateOf(t.state);
       const places = [t.city, ...t.serviceAreas].map(cityName);
       const hay = [...places, st?.name ?? "", st?.abbr ?? ""].map(norm);
-      // "Los Angeles, CA" style input: every comma/space-separated chunk must match something
+      // "Austin, TX" style input: every comma-separated chunk must match something
       const parts = loc.split(/[,]+/).map((x) => x.trim()).filter(Boolean);
       if (!parts.every((part) => hay.some((h) => h === part || h.includes(part)))) return false;
     }
 
     if (q) {
-      const hay = norm(
-        [
-          t.name, t.credentials, t.title, t.statement,
-          ...t.specialties.map((s) => specialties.find((x) => x.slug === s)?.name ?? s),
-        ].join(" "),
-      );
+      const hay = norm([t.name, t.category, t.address].join(" "));
       if (!q.split(/\s+/).every((w) => hay.includes(w))) return false;
     }
     return true;
   });
 
-  const sorted = [...matched].sort(compare(p.sort));
+  let sorted = [...matched].sort(compare(p.sort));
+  // A ZIP search lists the exact ZIP before the rest of its area
+  if (zip) sorted = [...sorted.filter((t) => t.zip === zip), ...sorted.filter((t) => t.zip !== zip)];
   const total = sorted.length;
   const totalPages = Math.max(1, Math.ceil(total / pageSize));
   const page = Math.min(p.page, totalPages);
@@ -59,15 +49,14 @@ export function searchList(all: Therapist[], p: SearchParams, pageSize: number):
 function compare(sort: SearchParams["sort"]) {
   switch (sort) {
     case "name": return (a: Therapist, b: Therapist) => a.name.localeCompare(b.name);
-    case "fee-low": return (a: Therapist, b: Therapist) => a.feeMin - b.feeMin || a.name.localeCompare(b.name);
-    case "fee-high": return (a: Therapist, b: Therapist) => b.feeMax - a.feeMax || a.name.localeCompare(b.name);
-    case "experience": return (a: Therapist, b: Therapist) => b.yearsExperience - a.yearsExperience || a.name.localeCompare(b.name);
+    case "rating": return (a: Therapist, b: Therapist) =>
+      (b.rating ?? 0) - (a.rating ?? 0) || (b.ratingCount ?? 0) - (a.ratingCount ?? 0) || a.name.localeCompare(b.name);
+    case "reviews": return (a: Therapist, b: Therapist) => (b.ratingCount ?? 0) - (a.ratingCount ?? 0) || a.name.localeCompare(b.name);
     default:
-      // Recommended: available first, featured next, then experience (stable, deterministic)
+      // Recommended: rating weighted by review count, then practices with contact details (stable, deterministic)
       return (a: Therapist, b: Therapist) =>
-        Number(b.acceptingClients) - Number(a.acceptingClients) ||
-        Number(b.featured) - Number(a.featured) ||
-        b.yearsExperience - a.yearsExperience ||
+        ratingScore(b) - ratingScore(a) ||
+        Number(!!b.phone || !!b.website) - Number(!!a.phone || !!a.website) ||
         a.name.localeCompare(b.name);
   }
 }

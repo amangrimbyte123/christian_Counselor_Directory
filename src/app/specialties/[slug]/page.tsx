@@ -22,7 +22,7 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
   if (!s) return { title: "Service not found", robots: { index: false } };
   return listingMetadata({
     title: `${s.name}: Christian Couples Counselors`,
-    description: `${s.summary} Learn what ${topicLower(s.name)} involves and browse sample counselors who focus on it.`,
+    description: `${s.summary} Learn what ${topicLower(s.name)} involves and find Christian counseling practices near you.`,
     path: `/specialties/${s.slug}/`,
     params: parseSearchParams(await searchParams),
     ignore: ["specialty"],
@@ -55,7 +55,9 @@ export default async function SpecialtyPage({ params, searchParams }: Props) {
           <p className="mt-4 text-sm text-ink-600">These are general descriptions, not a diagnosis. A licensed professional can help you understand what is going on.</p>
         </div>
 
-        <DirectoryView params={sp} fixed={{ specialty: s.slug }} hide={["specialty"]} basePath={`/specialties/${s.slug}/`} />
+        <h2 className="mb-2 text-3xl">Find a practice for {topicLower(s.name)}</h2>
+        <p className="mb-6 max-w-3xl text-ink-600">Enter your city or ZIP code below. Our listings don&apos;t record which services each practice offers, so ask about {topicLower(s.name)} when you call.</p>
+        <DirectoryView params={sp} basePath={`/specialties/${s.slug}/`} />
 
         <div className="mt-16 grid gap-10 lg:grid-cols-2">
           <section aria-labelledby="faq">

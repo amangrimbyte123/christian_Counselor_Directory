@@ -17,7 +17,7 @@ const TOPICS = [
   { slug: "faith-and-spiritual-connection", title: "Faith & spiritual connection", text: "Growing together spiritually, even when you see faith differently.", tone: "bg-coral-50 text-coral-700" },
 ];
 
-export function TopicGrid({ specialties, counts }: { specialties: Specialty[]; counts: Record<string, number> }) {
+export function TopicGrid({ specialties }: { specialties: Specialty[] }) {
   const bySlug = new Map(specialties.map((s) => [s.slug, s]));
   return (
     <section className="section" aria-labelledby="topics">
@@ -39,8 +39,7 @@ export function TopicGrid({ specialties, counts }: { specialties: Specialty[]; c
                     <span className={`grid h-12 w-12 place-items-center rounded-2xl ${t.tone}`}><Icon name={s.icon} className="h-6 w-6" /></span>
                     <h3 className="mt-5 text-xl group-hover:text-brand-800">{t.title}</h3>
                     <p className="mt-2 flex-1 text-[15px] leading-relaxed text-ink-600">{t.text}</p>
-                    <span className="mt-5 flex items-center justify-between text-sm">
-                      <span className="text-ink-500">{counts[t.slug] ?? 0} sample counselors</span>
+                    <span className="mt-5 flex items-center justify-end text-sm">
                       <span className="inline-flex items-center gap-1 font-semibold text-brand-800">Explore <Icon name="arrow" className="h-4 w-4 transition-transform group-hover:translate-x-1" /></span>
                     </span>
                   </Link>

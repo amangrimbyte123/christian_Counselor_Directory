@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: { default: `${SITE.name}: ${SITE.tagline}`, template: `%s | ${SITE.name}` },
   description:
-    "Find Christian couples therapy and marriage counseling near you or online: premarital, affair recovery, intimacy and more. Demo directory with sample data.",
+    "Find Christian couples therapy and marriage counseling near you or online: premarital, affair recovery, intimacy and more.",
   alternates: { canonical: "/" },
 };
 
@@ -26,7 +26,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           Skip to main content
         </a>
         <div className="bg-brand-900 px-4 py-1.5 text-center text-xs text-brand-100">
-          Demo site: all counselor profiles are fictional sample data and are not verified.
+          Listings come from public Google Maps information. Licences are not verified: please check before booking.
         </div>
         <Header />
         <main id="main" className="flex-1">{children}</main>

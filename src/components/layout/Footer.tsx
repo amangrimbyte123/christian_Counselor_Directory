@@ -57,7 +57,7 @@ export async function Footer() {
       </div>
       <div className="border-t border-sand-200">
         <div className="container-page flex flex-col gap-2 py-6 text-sm text-ink-600 sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} {SITE.name}. Demo site: all profiles are fictional sample data.</p>
+          <p>© {new Date().getFullYear()} {SITE.name}. Practice listings come from public Google Maps information and are not verified.</p>
           <p className="flex gap-4"><Link className={a} href="/privacy/">Privacy</Link><Link className={a} href="/terms/">Terms</Link></p>
         </div>
       </div>

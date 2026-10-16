@@ -15,8 +15,8 @@ export default function TrustPage() {
       <div className="rounded-xl2 border border-coral-100 bg-coral-50 p-5 text-coral-700">
         <strong>If you are in crisis or danger:</strong> in the US, call or text <a href="tel:988">988</a>, or call 911. For domestic violence, call the National Domestic Violence Hotline at 1-800-799-7233. Outside the US, contact your local emergency number. This site cannot provide emergency help.
       </div>
-      <h2>About this demo</h2>
-      <p>All counselors, credentials, fees and biographies on this site are fictional sample data. Profiles are labelled &ldquo;sample&rdquo; and credentials show as &ldquo;not verified&rdquo;. There are no reviews or ratings.</p>
+      <h2>Where our listings come from</h2>
+      <p>Practice listings come from public Google Maps information: name, category, address, phone number, website, opening hours and Google rating. Ratings and review counts are Google&apos;s, not ours, and we never write reviews. We have not verified licences, faith approach, fees or availability, so every listing shows &ldquo;Licence not verified&rdquo;. Information may be out of date; if something is wrong, <Link href="/contact/">let us know</Link>.</p>
       <h2>How to verify a real counselor</h2>
       <ul>
         <li>Ask for their licence type and number, then look it up on your state licensing board&apos;s public search.</li>
@@ -36,8 +36,8 @@ export default function TrustPage() {
       <p>Some Christian counselors are licensed clinicians regulated by a state board. Many pastoral or biblical counselors are not state-licensed. Both can be supportive, but only a licence can be checked with a board, so ask directly and verify. <Link href="/blog/licensed-therapist-vs-pastoral-counselor/">Read more about the differences</Link>.</p>
       <h2>Common questions</h2>
       <Faq items={[
-        { q: "Does the directory verify credentials?", a: "In this demo, no. A live directory should verify licences with state boards and display the date of the last check." },
-        { q: "How is my information used?", a: "In this demo, nothing you type into forms is stored or sent." },
+        { q: "Does the directory verify credentials?", a: "Not yet. Listings come from public Google Maps information, so always check a counselor's licence with your state board before booking." },
+        { q: "How is my information used?", a: "You can search without an account. Nothing you type into forms on this site is stored or sent." },
         { q: "How do I report a concern about a counselor?", a: "Contact your state licensing board. You can also tell us through the contact page." },
       ]} />
       <p><Link href="/contact/">Contact us</Link> with safety questions.</p>

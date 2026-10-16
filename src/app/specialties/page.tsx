@@ -2,7 +2,7 @@ import Link from "next/link";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { Icon } from "@/components/ui/Icon";
 import { buildMetadata } from "@/lib/seo";
-import { countBySpecialty, listSpecialties } from "@/lib/repository";
+import { listSpecialties } from "@/lib/repository";
 
 export const metadata = buildMetadata({
   title: "Christian Couples Counseling Services: Marriage, Premarital and More",
@@ -11,13 +11,13 @@ export const metadata = buildMetadata({
 });
 
 export default async function SpecialtiesPage() {
-  const [specs, counts] = await Promise.all([listSpecialties(), countBySpecialty()]);
+  const specs = await listSpecialties();
   return (
     <>
       <PageHeader
         crumbs={[{ name: "Services", href: "/specialties/" }]}
         title="How counseling can help"
-        intro="Not sure where to start? Pick what feels closest to your marriage right now. Each page explains what the counseling involves and lists counselors who focus on it."
+        intro="Not sure where to start? Pick what feels closest to your marriage right now. Each page explains what the counseling involves and helps you find a practice nearby."
       />
       <div className="container-page py-10">
         <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -27,7 +27,7 @@ export default async function SpecialtiesPage() {
                 <span className="grid h-12 w-12 place-items-center rounded-xl bg-brand-50 text-brand-700"><Icon name={s.icon} className="h-6 w-6" /></span>
                 <h2 className="mt-4 text-2xl group-hover:text-brand-800">{s.name}</h2>
                 <p className="mt-1.5 flex-1 text-ink-600">{s.summary}</p>
-                <p className="mt-4 text-sm font-medium text-brand-800">{counts[s.slug] ?? 0} sample counselors →</p>
+                <p className="mt-4 text-sm font-medium text-brand-800">Learn more →</p>
               </Link>
             </li>
           ))}

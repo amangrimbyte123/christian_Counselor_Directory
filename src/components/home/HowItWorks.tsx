@@ -4,12 +4,12 @@ import { Icon } from "@/components/ui/Icon";
 import { PHOTOS } from "@/lib/images";
 
 const STEPS = [
-  { icon: "compass", t: "Explore what you need as a couple", d: "Start with what you're facing together, then narrow by location, online or in-person sessions, language and budget." },
-  { icon: "users", t: "Compare counselor profiles", d: "Read about each counselor's focus, approach, faith integration and fees at your own pace. Shortlisting two or three is a good start." },
-  { icon: "message", t: "Contact someone when you're ready", d: "Send a short message or ask about a first call. Many counselors offer a brief consultation to check the fit for you both." },
+  { icon: "compass", t: "Explore what you need as a couple", d: "Start with what you're facing together, then search your city, state or ZIP code." },
+  { icon: "users", t: "Compare practices near you", d: "See each practice's address, Google rating, hours and website at your own pace. Shortlisting two or three is a good start." },
+  { icon: "message", t: "Call when you're ready", d: "Ask about fees, insurance and how they include faith. Many counselors offer a brief consultation to check the fit for you both." },
 ];
 
-export function HowItWorks({ onlineCount }: { onlineCount: number }) {
+export function HowItWorks({ total }: { total: number }) {
   return (
     <section className="section bg-brand-900 text-white" aria-labelledby="how">
       <div className="container-page grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
@@ -39,7 +39,7 @@ export function HowItWorks({ onlineCount }: { onlineCount: number }) {
           </div>
           <div className="relative -mt-16 ml-4 mr-4 rounded-2xl bg-white p-5 text-ink-900 shadow-lift sm:ml-8 sm:mr-auto sm:max-w-sm sm:p-6">
             <p className="flex items-center gap-2 text-sm font-semibold text-brand-700"><Icon name="video" className="h-4 w-4" /> Prefer to stay home?</p>
-            <p className="mt-2 text-ink-700">{onlineCount} sample counselors offer secure video sessions for couples, so you can choose beyond your own city.</p>
+            <p className="mt-2 text-ink-700">Many of the {total} practices listed here also see couples by secure video, so ask about online sessions when you call.</p>
             <ButtonLink href="/online-therapy/" variant="accent" className="mt-4">Explore online counseling</ButtonLink>
           </div>
         </div>

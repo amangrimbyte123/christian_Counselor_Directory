@@ -18,7 +18,7 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
   if (!s) return { title: "Location not found", robots: { index: false } };
   return listingMetadata({
     title: `Christian Couples Therapy in ${s.name}: Counselors`,
-    description: `Browse ${s.count} sample therapists in ${s.name}${s.cities.length ? `, including ${s.cities.slice(0, 3).map((c) => c.name).join(", ")}` : ""}. Filter by specialty, language and session type.`,
+    description: `Browse ${s.count} Christian couples and marriage counseling practices in ${s.name}${s.cities.length ? `, including ${s.cities.slice(0, 3).map((c) => c.name).join(", ")}` : ""}. Google ratings, phone numbers and directions.`,
     path: `/locations/${s.slug}/`,
     params: parseSearchParams(await searchParams),
   });
@@ -35,7 +35,7 @@ export default async function StatePage({ params, searchParams }: Props) {
     <>
       <PageHeader crumbs={[{ name: "Locations", href: "/locations/" }, { name: s.name, href: `/locations/${s.slug}/` }]}
         title={`Christian couples therapy in ${s.name}`}
-        intro={`${s.count} sample profiles for Christian couples therapy in ${s.name}. Choose a city, or filter the full list below. Online sessions are also available from many counselors.`}>
+        intro={`${s.count} counseling practices for Christian couples therapy in ${s.name}. Choose a city, or filter the full list below. Many practices also offer online sessions, so ask when you call.`}>
         <ul className="flex flex-wrap gap-2" aria-label={`Cities in ${s.name}`}>
           {s.cities.map((c) => (
             <li key={c.slug}><Link href={`/locations/${s.slug}/${c.slug}/`} className="inline-flex rounded-full border border-brand-200 bg-white px-4 py-2 text-sm font-medium text-brand-800 hover:bg-brand-50">{c.name} ({c.count})</Link></li>

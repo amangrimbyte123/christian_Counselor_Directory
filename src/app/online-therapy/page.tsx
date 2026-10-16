@@ -8,7 +8,7 @@ import { Icon } from "@/components/ui/Icon";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { faqJsonLd, listingMetadata } from "@/lib/seo";
 import { cleanQueryRedirect, parseSearchParams } from "@/lib/params";
-import { countOnline } from "@/lib/repository";
+import { countTherapists } from "@/lib/repository";
 
 type Props = { searchParams: Promise<Record<string, string | string[] | undefined>> };
 
@@ -22,7 +22,7 @@ const FAQS = [
 export async function generateMetadata({ searchParams }: Props): Promise<Metadata> {
   return listingMetadata({
     title: "Online Christian Couples Therapy & Counseling by Video",
-    description: "Find online Christian couples therapy: browse counselors offering marriage and couples sessions by secure video. Filter by service, language and fee. Sample data for demonstration.",
+    description: "Online Christian couples therapy: how video sessions work, what to check before booking, and counseling practices to call about online sessions in your state.",
     path: "/online-therapy/",
     params: parseSearchParams(await searchParams),
     ignore: ["format"],
@@ -34,12 +34,12 @@ export default async function OnlinePage({ searchParams }: Props) {
   const clean = cleanQueryRedirect(raw);
   if (clean !== null) redirect(`/online-therapy/${clean}`);
   const sp = parseSearchParams(raw);
-  const count = await countOnline();
+  const count = await countTherapists();
   return (
     <>
       <JsonLd data={faqJsonLd(FAQS)} />
       <PageHeader crumbs={[{ name: "Online counseling", href: "/online-therapy/" }]} title="Online Christian couples therapy"
-        intro={<>{count} sample counselors offer secure video sessions for couples. Meet together from home, on your schedule, without a commute. Prefer to meet in person? <Link href="/christian-couples-therapy/" className="font-medium text-brand-800 underline underline-offset-2">Find Christian couples therapy near you</Link>.</>}>
+        intro={<>Many of the {count} practices listed here also see couples by secure video. Meet together from home, on your schedule, without a commute. Call a practice in your state to ask whether they offer online sessions. Prefer to meet in person? <Link href="/christian-couples-therapy/" className="font-medium text-brand-800 underline underline-offset-2">Find Christian couples therapy near you</Link>.</>}>
         <ul className="grid gap-3 sm:grid-cols-3">
           {[["video", "Secure video sessions"], ["clock", "Flexible scheduling"], ["globe", "Wider choice of Christian counselors"]].map(([i, t]) => (
             <li key={t} className="flex items-center gap-3 rounded-xl bg-white p-3.5 text-ink-700 shadow-card"><Icon name={i} className="h-5 w-5 text-brand-700" />{t}</li>
@@ -47,7 +47,7 @@ export default async function OnlinePage({ searchParams }: Props) {
         </ul>
       </PageHeader>
       <div className="container-page py-10">
-        <DirectoryView params={sp} fixed={{ format: "online" }} hide={["format"]} basePath="/online-therapy/" />
+        <DirectoryView params={sp} basePath="/online-therapy/" />
         <section className="mt-16 max-w-3xl" aria-labelledby="faq">
           <h2 id="faq" className="mb-4 text-3xl">Online couples counseling: common questions</h2>
           <Faq items={FAQS} />

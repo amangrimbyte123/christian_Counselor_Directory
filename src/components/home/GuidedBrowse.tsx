@@ -58,8 +58,8 @@ export function GuidedBrowse({ specialties }: { specialties: { slug: string; nam
                 </li>
               ))}
             </ul>
-            <Link href={`/therapists/?specialty=${suggestions[0].slug}`} className="link-arrow mt-4 text-sm">
-              See counselors who focus on {topicLower(suggestions[0].name)} <Icon name="arrow" className="h-4 w-4" />
+            <Link href={`/specialties/${suggestions[0].slug}/`} className="link-arrow mt-4 text-sm">
+              Find help with {topicLower(suggestions[0].name)} near you <Icon name="arrow" className="h-4 w-4" />
             </Link>
           </div>
         )}

@@ -45,13 +45,15 @@ export interface StateSummary extends State { count: number; cities: (City & { c
 
 /** States/cities with at least `min` therapists. Thin locations are excluded so they are never indexed. */
 export async function listLocations(min = SITE.minForLocationPage): Promise<StateSummary[]> {
-  const cityCount = (slug: string) => therapists.filter((t) => t.city === slug).length;
+  const cityCount = (state: string, slug: string) =>
+    therapists.filter((t) => t.state === state && (t.city === slug || t.serviceAreas.includes(slug))).length;
   return states
     .map((s) => {
       const cs = cities
         .filter((c) => c.stateSlug === s.slug)
-        .map((c) => ({ ...c, count: cityCount(c.slug) }))
-        .filter((c) => c.count >= min);
+        .map((c) => ({ ...c, count: cityCount(s.slug, c.slug) }))
+        .filter((c) => c.count >= min)
+        .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
       const count = therapists.filter((t) => t.state === s.slug).length;
       return { ...s, count, cities: cs };
     })
@@ -66,32 +68,31 @@ export async function getCity(stateSlug: string, citySlug: string) {
   return st && city ? { state: st, city } : undefined;
 }
 
+/** Distance in km between two practices, or Infinity when either has no coordinates. */
+function distanceKm(a: Therapist, b: Therapist) {
+  if (a.lat == null || a.lng == null || b.lat == null || b.lng == null) return Infinity;
+  const rad = Math.PI / 180;
+  const h = Math.sin(((b.lat - a.lat) * rad) / 2) ** 2 +
+    Math.cos(a.lat * rad) * Math.cos(b.lat * rad) * Math.sin(((b.lng - a.lng) * rad) / 2) ** 2;
+  return 12742 * Math.asin(Math.sqrt(h));
+}
+
+/** Nearby practices in the same state, closest first. */
 export async function getRelatedTherapists(t: Therapist, limit = 3): Promise<Therapist[]> {
   return therapists
-    .filter((o) => o.id !== t.id)
-    .map((o) => ({
-      o,
-      score:
-        o.specialties.filter((s) => t.specialties.includes(s)).length * 3 +
-        (o.city === t.city ? 2 : 0) +
-        (o.state === t.state ? 1 : 0),
-    }))
-    .filter((x) => x.score > 0)
-    .sort((a, b) => b.score - a.score || a.o.name.localeCompare(b.o.name))
+    .filter((o) => o.id !== t.id && o.state === t.state)
+    .map((o) => ({ o, d: distanceKm(t, o) }))
+    .sort((a, b) => a.d - b.d || a.o.name.localeCompare(b.o.name))
     .slice(0, limit)
     .map((x) => x.o);
 }
 
-export async function countBySpecialty(): Promise<Record<string, number>> {
-  const out: Record<string, number> = {};
-  for (const t of therapists) for (const s of t.specialties) out[s] = (out[s] ?? 0) + 1;
-  return out;
-}
-export async function countOnline(): Promise<number> {
-  return therapists.filter((t) => t.formats.includes("online")).length;
+export async function countTherapists(): Promise<number> {
+  return therapists.length;
 }
 
 export const cityLabel = (slug: string) => cities.find((c) => c.slug === slug)?.name ?? slug;
+export { LISTINGS_SOURCE } from "@/data/therapists";
 export const stateLabel = (slug: string) => states.find((s) => s.slug === slug);
 export const specialtyLabel = (slug: string) => specialties.find((s) => s.slug === slug)?.name ?? slug;
 export const approachLabel = (slug: string) => approaches.find((a) => a.slug === slug)?.name ?? slug;

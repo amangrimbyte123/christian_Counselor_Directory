@@ -3,20 +3,19 @@ import type { Profession, SearchParams } from "@/types";
 type RawParams = Record<string, string | string[] | undefined>;
 
 const PROFESSIONS: Profession[] = ["marriage-family-therapist", "counselor", "psychologist", "social-worker"];
-const SORTS: SearchParams["sort"][] = ["recommended", "name", "fee-low", "fee-high", "experience"];
+const SORTS: SearchParams["sort"][] = ["recommended", "rating", "reviews", "name"];
 
 export const PROFESSION_LABELS: Record<Profession, string> = {
   psychologist: "Psychologist",
-  counselor: "Counselor",
+  counselor: "Counselor or therapist",
   "social-worker": "Social worker",
-  "marriage-family-therapist": "Marriage & family therapist",
+  "marriage-family-therapist": "Marriage & family counselor",
 };
 export const SORT_LABELS: Record<SearchParams["sort"], string> = {
   recommended: "Recommended",
+  rating: "Highest rated",
+  reviews: "Most reviews",
   name: "Name (A–Z)",
-  "fee-low": "Fee: low to high",
-  "fee-high": "Fee: high to low",
-  experience: "Most experience",
 };
 export const PROFESSION_OPTIONS = PROFESSIONS;
 
@@ -24,27 +23,20 @@ const first = (v: string | string[] | undefined) => (Array.isArray(v) ? v[0] : v
 
 /** Parse untrusted URL params into a validated SearchParams object. */
 export function parseSearchParams(raw: RawParams): SearchParams {
-  const format = first(raw.format);
   const profession = first(raw.profession);
   const sort = first(raw.sort);
-  const maxFee = Number(first(raw.maxFee));
   const page = Math.floor(Number(first(raw.page)));
   return {
     q: first(raw.q)?.slice(0, 80),
     location: first(raw.location)?.slice(0, 80),
-    specialty: first(raw.specialty),
-    approach: first(raw.approach),
-    language: first(raw.language),
-    format: format === "online" || format === "in-person" ? format : undefined,
     profession: PROFESSIONS.includes(profession as Profession) ? (profession as Profession) : undefined,
-    maxFee: Number.isFinite(maxFee) && maxFee > 0 ? maxFee : undefined,
     sort: SORTS.includes(sort as SearchParams["sort"]) ? (sort as SearchParams["sort"]) : "recommended",
     page: Number.isFinite(page) && page > 0 ? page : 1,
   };
 }
 
 /** Filters that came from the URL path (landing pages) are passed separately and never serialised. */
-const KEYS = ["q", "location", "specialty", "format", "profession", "language", "approach", "maxFee", "sort", "page"] as const;
+const KEYS = ["q", "location", "profession", "sort", "page"] as const;
 
 /** Build a query string, omitting defaults. `overrides` replaces values (use undefined to remove). */
 export function toQueryString(p: SearchParams, overrides: Partial<Record<(typeof KEYS)[number], string | number | undefined>> = {}, omit: string[] = []) {

@@ -14,7 +14,7 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
   const thin = hasActiveFilters(p) || p.sort !== "recommended";
   return buildMetadata({
     title: p.page > 1 ? `Browse Christian Couples Counselors (Page ${p.page})` : "Browse Christian Couples Counselors",
-    description: "Search and filter Christian couples and marriage counselors by service, location, session type, language and fee.",
+    description: "Search Christian couples and marriage counseling practices by city, state or ZIP code, with Google ratings, phone numbers and directions.",
     path: thin ? "/therapists/" : `/therapists/${toQueryString(p, { page: p.page })}`,
     noindex: thin,
   });
@@ -31,7 +31,7 @@ export default async function TherapistsPage({ searchParams }: Props) {
       <PageHeader
         crumbs={[{ name: "Counselors", href: "/therapists/" }]}
         title="Find a counselor who fits"
-        intro={`Browse ${total} sample profiles. Narrow by service, location, session type, language and fee, then open a profile to request an appointment.`}
+        intro={`Browse ${total} counseling practices across the US. Search by city, state or ZIP code, then open a listing for its phone number, website, hours and directions.`}
       />
       <div className="container-page py-8 sm:py-10">
         <DirectoryView params={params} basePath="/therapists/" />

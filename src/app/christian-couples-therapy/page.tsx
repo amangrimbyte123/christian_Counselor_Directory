@@ -9,7 +9,7 @@ import { JsonLd } from "@/components/ui/JsonLd";
 import { PopularSearches } from "@/components/ui/PopularSearches";
 import { faqJsonLd, listingMetadata } from "@/lib/seo";
 import { cleanQueryRedirect, parseSearchParams } from "@/lib/params";
-import { countOnline, listLocations, listSpecialties, listTherapists } from "@/lib/repository";
+import { listLocations, listSpecialties, listTherapists } from "@/lib/repository";
 
 type Props = { searchParams: Promise<Record<string, string | string[] | undefined>> };
 
@@ -22,7 +22,7 @@ const FAQS = [
   { q: "Can we try it if only one of us is a Christian?", a: "Yes. A good counselor will ask how much faith each of you wants in sessions and will not pressure either partner. Say early on that you see faith differently, so the counselor can make room for both of you." },
   { q: "How do we find Christian couples therapy near me?", a: "Browse by state and city below, or filter the directory by location. If there is no one close by, many counselors offer online sessions to couples anywhere in the state where they are licensed." },
   { q: "Can we do Christian couples therapy online?", a: "Many counselors offer secure video sessions. Online therapy widens your choice, but the counselor generally needs to be licensed in the state where you are when you meet." },
-  { q: "How much does it cost, and does insurance cover it?", a: "Fees vary by location and profession; the sample profiles here range from about $80 to $275 a session, and some list a sliding scale. Insurance often covers couples work only when it is tied to a diagnosis, so ask your plan and the counselor directly." },
+  { q: "How much does it cost, and does insurance cover it?", a: "Fees vary by location and profession, often somewhere around $80 to $250 a session, and some practices offer a sliding scale. Insurance often covers couples work only when it is tied to a diagnosis, so ask your plan and the counselor directly." },
   { q: "How many sessions do couples usually need?", a: "Many couples meet weekly for 8 to 20 sessions, though it depends on what you are working through. Your counselor should talk with you about goals and check in on progress along the way." },
 ];
 
@@ -35,7 +35,7 @@ const STEPS = [
 export async function generateMetadata({ searchParams }: Props): Promise<Metadata> {
   return listingMetadata({
     title: "Christian Couples Therapy: Find a Faith-Integrated Couples Therapist",
-    description: "What Christian couples therapy involves, what it costs and how to find a faith-integrated couples therapist near you or online. Browse sample counselors (demo data).",
+    description: "What Christian couples therapy involves, what it costs and how to find a faith-integrated couples therapist near you or online. Browse real practices by state and city.",
     path: PATH,
     params: parseSearchParams(await searchParams),
   });
@@ -46,13 +46,13 @@ export default async function ChristianCouplesTherapyPage({ searchParams }: Prop
   const clean = cleanQueryRedirect(raw);
   if (clean !== null) redirect(`${PATH}${clean}`);
   const sp = parseSearchParams(raw);
-  const [all, locs, specs, online] = await Promise.all([listTherapists(), listLocations(), listSpecialties(), countOnline()]);
+  const [all, locs, specs] = await Promise.all([listTherapists(), listLocations(), listSpecialties()]);
 
   return (
     <>
       <JsonLd data={faqJsonLd(FAQS)} />
       <PageHeader crumbs={[{ name: "Christian couples therapy", href: PATH }]} title="Christian couples therapy"
-        intro={`Couples therapy with a counselor who respects your faith and brings it into the room as much as you'd like. Browse ${all.length} sample counselors in person and online, and learn what to expect before you book.`}>
+        intro={`Couples therapy with a counselor who respects your faith and brings it into the room as much as you'd like. Browse ${all.length} counseling practices across the US, and learn what to expect before you book.`}>
         <ul className="grid gap-3 sm:grid-cols-3">
           {STEPS.map((s) => (
             <li key={s.title} className="rounded-xl bg-white p-4 shadow-card">
@@ -132,7 +132,7 @@ export default async function ChristianCouplesTherapyPage({ searchParams }: Prop
             </div>
             <div className="rounded-xl2 bg-sage-50 p-6">
               <p className="flex items-center gap-2.5 font-medium text-ink-900"><Icon name="video" className="h-5 w-5 text-brand-700" />Prefer to meet from home?</p>
-              <p className="mt-2 text-sm text-ink-700">{online} sample counselors offer online Christian couples therapy by secure video.</p>
+              <p className="mt-2 text-sm text-ink-700">Many practices also see couples by secure video anywhere in the state where they are licensed. Ask when you call.</p>
               <Link href="/online-therapy/" className="link-arrow mt-3 text-sm">Online couples therapy <Icon name="arrow" className="h-4 w-4" /></Link>
             </div>
           </aside>

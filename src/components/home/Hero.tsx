@@ -14,7 +14,7 @@ const QUICK = [
 ];
 
 // Only claims that are true of this site today
-const TRUST = ["Free to search", "No account or questionnaire", "Fees shown up front", "Sample data clearly labelled"];
+const TRUST = ["Free to search", "No account or questionnaire", "Real practices with Google ratings", "Call, website and directions in one tap"];
 
 export function Hero() {
   return (
@@ -34,7 +34,7 @@ export function Hero() {
               Strengthen your marriage with a counselor who <em className="text-brand-700">honours&nbsp;your&nbsp;faith</em>.
             </h1>
             <p className="mt-4 max-w-xl text-[1.05rem] text-ink-600 sm:mt-6 sm:text-xl">
-              Browse counselors by what you&apos;re facing together, where you live, and whether you&apos;d like to meet online or in person.<span className="hidden sm:inline"> Take your time: there&apos;s no sign-up and no pressure.</span>
+              Find counseling practices near you by city, state or ZIP code, and learn what to ask before you call.<span className="hidden sm:inline"> Take your time: there&apos;s no sign-up and no pressure.</span>
             </p>
 
             <div className="mt-6 sm:mt-8"><SearchForm /></div>

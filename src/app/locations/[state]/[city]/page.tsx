@@ -13,9 +13,9 @@ import { getCity, listLocations, listSpecialties } from "@/lib/repository";
 const cityFaqs = (city: City, state: State) => {
   const place = city.areaLabel ?? city.name;
   return [
-    { q: `How do we find Christian couples therapy in ${place}?`, a: `Browse the counselors listed above, filter by what you're facing and your budget, and open a profile to request a first conversation. Ask each counselor how they integrate faith and whether they are licensed in ${state.name}.` },
-    { q: `Can we have online sessions with a counselor in ${state.name}?`, a: `Yes, many counselors offer secure video sessions. They generally need to be licensed in ${state.name} if you are in ${state.name} during the session, so check before you book.` },
-    { q: `How much does couples therapy cost in ${city.name}?`, a: `Fees vary by profession and experience. Each profile shows a sample fee range, and some counselors list a sliding scale or a free first call. Ask your insurer whether couples sessions are covered.` },
+    { q: `How do we find Christian couples therapy in ${place}?`, a: `Browse the practices listed above, open one to see its hours and contact details, and call to ask about a first conversation. Ask each counselor how they integrate faith and whether they are licensed in ${state.name}.` },
+    { q: `Can we have online sessions with a counselor in ${state.name}?`, a: `Yes, many practices offer secure video sessions. They generally need to be licensed in ${state.name} if you are in ${state.name} during the session, so check before you book.` },
+    { q: `How much does couples therapy cost in ${city.name}?`, a: `Fees vary by profession and experience, so ask each practice when you call. Some offer a sliding scale or a free first call. Ask your insurer whether couples sessions are covered.` },
     { q: "Do we both need to share the same faith?", a: "No. A good counselor asks how much faith each of you wants in sessions and makes room for both partners, including when you see faith differently." },
   ];
 };
@@ -32,7 +32,7 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
   if (!found) return { title: "Location not found", robots: { index: false } };
   return listingMetadata({
     title: found.city.areaLabel ? `Christian Couples Therapy in ${found.city.areaLabel}` : `Christian Couples Therapy in ${found.city.name}, ${found.state.abbr}: Counselors`,
-    description: `Looking for Christian couples therapy in ${found.city.name}? Browse ${found.city.count} sample counselors in ${found.city.name}, ${found.state.name}. Filter by specialty, language, fee and online or in-person sessions.`,
+    description: `Looking for Christian couples therapy in ${found.city.name}? Compare ${found.city.count} counseling practices in ${found.city.name}, ${found.state.name}, with Google ratings, phone numbers, hours and directions.`,
     path: `/locations/${state}/${city}/`,
     params: parseSearchParams(await searchParams),
   });
@@ -61,7 +61,7 @@ export default async function CityPage({ params, searchParams }: Props) {
         ]}
         title={`Christian couples therapy in ${place}`}
         intro={<>
-          <p>{found.city.count} sample profiles for Christian couples therapy and marriage counseling in {found.city.name}. Compare services, fees and availability, then open a profile to request an appointment.</p>
+          <p>{found.city.count} counseling practices for Christian couples therapy and marriage counseling in {found.city.name}. Compare ratings and locations, then call or visit their website to ask about availability.</p>
           {found.city.blurb && <p className="mt-2">{found.city.blurb}</p>}
         </>}
       />

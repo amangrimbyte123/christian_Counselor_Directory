@@ -8,6 +8,7 @@ import { SortSelect } from "./SortSelect";
 import { Pagination } from "@/components/ui/Pagination";
 import { buttonClass } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
+import { SITE } from "@/lib/site";
 
 /**
  * Shared results UI for /therapists, specialty, location and online pages.
@@ -33,7 +34,7 @@ export async function DirectoryView({ params, fixed = {}, hide = [], basePath }:
       <section aria-labelledby="results-heading">
         <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
           <h2 id="results-heading" className="font-sans text-base font-medium text-ink-700" aria-live="polite">
-            {result.total === 0 ? "No counselors found" : <>Showing <strong>{from}–{to}</strong> of <strong>{result.total}</strong> {result.total === 1 ? "counselor" : "counselors"}</>}
+            {result.total === 0 ? "No practices found" : <>Showing <strong>{from}–{to}</strong> of <strong>{result.total}</strong> {result.total === 1 ? "practice" : "practices"}</>}
           </h2>
           {result.total > 1 && <SortSelect value={params.sort} options={sortOptions} />}
         </div>
@@ -41,13 +42,13 @@ export async function DirectoryView({ params, fixed = {}, hide = [], basePath }:
         {result.total === 0 ? (
           <div className="rounded-xl2 border border-dashed border-sand-300 bg-white p-8 text-center sm:p-12">
             <Icon name="search" className="mx-auto h-10 w-10 text-brand-600" />
-            <h3 className="mt-4 text-2xl">No counselors match those filters</h3>
+            <h3 className="mt-4 text-2xl">No practices match those filters</h3>
             <p className="mx-auto mt-2 max-w-md text-ink-600">
-              Try removing a filter, checking the spelling of a city or ZIP code, or choosing online sessions, which widens your options.
+              Try removing a filter, checking the spelling of a city or ZIP code, or searching the whole state. Many practices also offer online sessions, so it is worth calling one a little further away.
             </p>
             <div className="mt-6 flex flex-wrap justify-center gap-3">
               {filtered && <Link href={basePath} className={buttonClass("primary")}>Clear all filters</Link>}
-              <Link href="/online-therapy/" className={buttonClass("secondary")}>Browse online counselors</Link>
+              <Link href="/locations/" className={buttonClass("secondary")}>Browse by location</Link>
               <Link href="/therapists/" className={buttonClass("ghost")}>See all counselors</Link>
             </div>
           </div>
@@ -57,6 +58,7 @@ export async function DirectoryView({ params, fixed = {}, hide = [], basePath }:
               {result.items.map((t) => <li key={t.id}><TherapistCard t={t} /></li>)}
             </ul>
             <Pagination page={result.page} totalPages={result.totalPages} hrefFor={(p) => qs({ page: p })} />
+            <p className="mt-6 text-sm text-ink-500">{SITE.dataNotice}</p>
           </>
         )}
       </section>

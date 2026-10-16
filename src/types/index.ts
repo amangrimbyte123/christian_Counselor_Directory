@@ -43,33 +43,30 @@ export interface Language {
   name: string;
 }
 
+/** A real counseling practice, imported from public Google Maps data (see gmb_scraper/). */
 export interface Therapist {
   id: string;
   slug: string;
   name: string;
-  credentials: string; // display string, e.g. "PhD, Licensed Psychologist"
-  profession: Profession;
-  title: string; // e.g. "Licensed Clinical Psychologist"
-  statement: string; // 1-sentence headline
-  bio: string[]; // paragraphs
+  category: string; // Google Maps category, e.g. "Marriage or relationship counselor"
+  profession: Profession; // mapped from category, used for filtering
+  address: string; // full address as listed on Google Maps
+  street?: string;
   city: string; // city slug
   state: string; // state slug
-  serviceAreas: string[]; // extra city slugs (in-person radius)
-  formats: SessionFormat[];
-  specialties: string[]; // specialty slugs
-  approaches: string[]; // approach slugs
-  languages: string[]; // language slugs
-  feeMin: number; // USD per session
-  feeMax: number;
-  slidingScale: boolean;
-  freeConsult: boolean;
-  acceptingClients: boolean;
-  yearsExperience: number;
-  ages: string[]; // "Couples", "Engaged couples" ...
+  zip?: string;
+  serviceAreas: string[]; // extra city slugs whose page also lists this practice (e.g. Toledo metro)
+  lat?: number;
+  lng?: number;
+  phone?: string;
+  website?: string;
+  rating?: number; // Google rating, 1–5
+  ratingCount?: number; // number of Google reviews
+  hours?: { day: string; time: string }[];
+  placeId?: string; // Google place ID, used for the directions link
   featured: boolean;
   avatarHue: number; // for generated placeholder avatar
-  faqs: { q: string; a: string }[];
-  /** Mock data is NEVER verified. A real data source sets this after checking a licensing board. */
+  /** Nobody has checked a licensing board for these practices yet. Set only after a real check. */
   verified: false | { board: string; checkedOn: string };
   /** Slugs this profile used to have; powers redirects. */
   previousSlugs?: string[];
@@ -103,13 +100,8 @@ export interface SearchParams {
   location?: string; // free text: city, state name or abbreviation
   state?: string;
   city?: string;
-  specialty?: string;
-  format?: "online" | "in-person";
   profession?: Profession;
-  language?: string;
-  approach?: string;
-  maxFee?: number;
-  sort: "recommended" | "name" | "fee-low" | "fee-high" | "experience";
+  sort: "recommended" | "rating" | "reviews" | "name";
   page: number;
 }
 
