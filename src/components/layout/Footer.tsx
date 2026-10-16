@@ -45,6 +45,7 @@ export async function Footer() {
           <h2 className="mb-3 font-sans text-sm font-semibold uppercase tracking-wider text-ink-900">Directory</h2>
           <ul className={col}>
             <li><Link className={a} href="/therapists/">All counselors</Link></li>
+            <li><Link className={a} href="/christian-couples-therapy/">Christian couples therapy</Link></li>
             <li><Link className={a} href="/online-therapy/">Online counseling</Link></li>
             <li><Link className={a} href="/blog/">Resources</Link></li>
             <li><Link className={a} href="/trust-and-safety/">Trust &amp; safety</Link></li>

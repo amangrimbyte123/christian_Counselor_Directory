@@ -19,7 +19,9 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const p = await getPost((await params).slug);
   if (!p) return { title: "Article not found", robots: { index: false } };
-  return buildMetadata({ title: p.title, description: p.excerpt, path: `/blog/${p.slug}/`, type: "article" });
+  return buildMetadata({ title: p.seoTitle ?? p.title, description: p.excerpt, path: `/blog/${p.slug}/`, type: "article",
+    // Article photos are wide crops; ask the image CDN for the 1200x630 share size
+    image: p.image && { ...p.image, src: p.image.src.replace("w=1600", "w=1200&h=630") } });
 }
 
 export default async function PostPage({ params }: Props) {
@@ -30,7 +32,8 @@ export default async function PostPage({ params }: Props) {
     <>
       <JsonLd data={{
         "@context": "https://schema.org", "@type": "Article", headline: p.title, description: p.excerpt,
-        datePublished: p.publishedOn, author: { "@type": "Organization", name: p.author },
+        datePublished: p.publishedOn, dateModified: p.publishedOn, author: { "@type": "Organization", name: p.author },
+        ...(p.image ? { image: p.image.src } : {}), keywords: p.keywords?.join(", "),
         publisher: { "@type": "Organization", name: SITE.name }, mainEntityOfPage: absoluteUrl(`/blog/${p.slug}/`),
       }} />
       <PageHeader crumbs={[{ name: "Resources", href: "/blog/" }, { name: p.title, href: `/blog/${p.slug}/` }]} title={p.title}
@@ -49,7 +52,7 @@ export default async function PostPage({ params }: Props) {
           <div className="rounded-xl2 border border-brand-200 bg-brand-50 p-6">
             <h2 className="text-xl">Ready to find a counselor?</h2>
             <p className="mb-4 mt-2 text-ink-600">Browse sample counselors by service and location.</p>
-            <ButtonLink href="/therapists/" className="w-full">Find a counselor</ButtonLink>
+            <ButtonLink href="/christian-couples-therapy/" className="w-full">Find Christian couples therapy</ButtonLink>
             <p className="mt-4 flex flex-wrap gap-2">
               {p.relatedSpecialties.map((s) => <Link key={s} href={`/specialties/${s}/`} className="rounded-full border border-brand-200 bg-white px-3 py-1 text-sm text-brand-800 hover:bg-brand-100">{specialtyLabel(s)}</Link>)}
             </p>

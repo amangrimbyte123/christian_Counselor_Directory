@@ -21,6 +21,8 @@ export interface City {
   name: string;
   stateSlug: string;
   zipPrefixes?: string[]; // first 3 digits of US ZIP codes served, for ZIP search
+  areaLabel?: string; // wider name people search for, e.g. "Toledo & Northwest Ohio"
+  blurb?: string; // short local intro for the city page
 }
 
 export interface State {
@@ -84,6 +86,10 @@ export interface Post {
   body: { h?: string; p: string }[];
   relatedSpecialties: string[];
   image?: ImageRef;
+  /** Search title when it should differ from the on-page headline. */
+  seoTitle?: string;
+  /** Search phrases this article is written to answer. */
+  keywords?: string[];
 }
 
 /** A remote or local image with its alt text. */

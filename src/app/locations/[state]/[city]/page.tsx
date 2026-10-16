@@ -3,9 +3,22 @@ import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { DirectoryView } from "@/components/directory/DirectoryView";
-import { listingMetadata } from "@/lib/seo";
+import { Faq } from "@/components/ui/Misc";
+import { JsonLd } from "@/components/ui/JsonLd";
+import { faqJsonLd, listingMetadata } from "@/lib/seo";
+import type { City, State } from "@/types";
 import { cleanQueryRedirect, parseSearchParams } from "@/lib/params";
 import { getCity, listLocations, listSpecialties } from "@/lib/repository";
+
+const cityFaqs = (city: City, state: State) => {
+  const place = city.areaLabel ?? city.name;
+  return [
+    { q: `How do we find Christian couples therapy in ${place}?`, a: `Browse the counselors listed above, filter by what you're facing and your budget, and open a profile to request a first conversation. Ask each counselor how they integrate faith and whether they are licensed in ${state.name}.` },
+    { q: `Can we have online sessions with a counselor in ${state.name}?`, a: `Yes, many counselors offer secure video sessions. They generally need to be licensed in ${state.name} if you are in ${state.name} during the session, so check before you book.` },
+    { q: `How much does couples therapy cost in ${city.name}?`, a: `Fees vary by profession and experience. Each profile shows a sample fee range, and some counselors list a sliding scale or a free first call. Ask your insurer whether couples sessions are covered.` },
+    { q: "Do we both need to share the same faith?", a: "No. A good counselor asks how much faith each of you wants in sessions and makes room for both partners, including when you see faith differently." },
+  ];
+};
 
 type Props = { params: Promise<{ state: string; city: string }>; searchParams: Promise<Record<string, string | string[] | undefined>> };
 
@@ -18,8 +31,8 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
   const found = await getCity(state, city);
   if (!found) return { title: "Location not found", robots: { index: false } };
   return listingMetadata({
-    title: `Christian Couples Counselors in ${found.city.name}, ${found.state.abbr}`,
-    description: `Browse ${found.city.count} sample therapists in ${found.city.name}, ${found.state.name}. Filter by specialty, language, fee and online or in-person sessions.`,
+    title: found.city.areaLabel ? `Christian Couples Therapy in ${found.city.areaLabel}` : `Christian Couples Therapy in ${found.city.name}, ${found.state.abbr}: Counselors`,
+    description: `Looking for Christian couples therapy in ${found.city.name}? Browse ${found.city.count} sample counselors in ${found.city.name}, ${found.state.name}. Filter by specialty, language, fee and online or in-person sessions.`,
     path: `/locations/${state}/${city}/`,
     params: parseSearchParams(await searchParams),
   });
@@ -35,16 +48,22 @@ export default async function CityPage({ params, searchParams }: Props) {
   const sp = parseSearchParams(raw);
   const specs = (await listSpecialties()).slice(0, 8);
   const neighbors = found.state.cities.filter((c) => c.slug !== city);
+  const place = found.city.areaLabel ?? `${found.city.name}, ${found.state.abbr}`;
+  const faqs = cityFaqs(found.city, found.state);
   return (
     <>
+      <JsonLd data={faqJsonLd(faqs)} />
       <PageHeader
         crumbs={[
           { name: "Locations", href: "/locations/" },
           { name: found.state.name, href: `/locations/${state}/` },
           { name: found.city.name, href: `/locations/${state}/${city}/` },
         ]}
-        title={`Counselors in ${found.city.name}, ${found.state.abbr}`}
-        intro={`${found.city.count} sample profiles in ${found.city.name}. Compare services, fees and availability, then open a profile to request an appointment.`}
+        title={`Christian couples therapy in ${place}`}
+        intro={<>
+          <p>{found.city.count} sample profiles for Christian couples therapy and marriage counseling in {found.city.name}. Compare services, fees and availability, then open a profile to request an appointment.</p>
+          {found.city.blurb && <p className="mt-2">{found.city.blurb}</p>}
+        </>}
       />
       <div className="container-page py-10">
         <DirectoryView params={sp} fixed={{ state, city }} hide={["location"]} basePath={`/locations/${state}/${city}/`} />
@@ -61,9 +80,14 @@ export default async function CityPage({ params, searchParams }: Props) {
               <Link href={`/locations/${state}/`} className="rounded-full border border-sand-300 bg-white px-3.5 py-1.5 text-sm hover:bg-brand-50">All of {found.state.name}</Link>
               {neighbors.map((c) => <Link key={c.slug} href={`/locations/${state}/${c.slug}/`} className="rounded-full border border-sand-300 bg-white px-3.5 py-1.5 text-sm hover:bg-brand-50">{c.name}</Link>)}
               <Link href="/online-therapy/" className="rounded-full border border-sand-300 bg-white px-3.5 py-1.5 text-sm hover:bg-brand-50">Online counseling</Link>
+              <Link href="/christian-couples-therapy/" className="rounded-full border border-sand-300 bg-white px-3.5 py-1.5 text-sm hover:bg-brand-50">About Christian couples therapy</Link>
             </p>
           </section>
         </div>
+        <section className="mt-14 max-w-3xl" aria-labelledby="faq">
+          <h2 id="faq" className="mb-4 text-3xl">Christian couples therapy in {found.city.name}: common questions</h2>
+          <Faq items={faqs} />
+        </section>
       </div>
     </>
   );

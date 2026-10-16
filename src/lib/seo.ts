@@ -1,7 +1,13 @@
 import type { Metadata } from "next";
 import { SITE, absoluteUrl } from "./site";
 import { hasActiveFilters, toQueryString } from "./params";
-import type { SearchParams } from "@/types";
+import type { ImageRef, SearchParams } from "@/types";
+
+/** Default share image: a site photo cropped to the 1200x630 Open Graph size. */
+const SHARE_IMAGE: ImageRef = {
+  src: "https://images.unsplash.com/photo-1604881990409-b9f246db39da?auto=format&fit=crop&w=1200&h=630&q=80",
+  alt: "Two people holding hands across a table: Christian couples therapy and marriage counseling",
+};
 
 interface MetaInput {
   title: string; // page-specific, the root template appends the site name
@@ -9,16 +15,18 @@ interface MetaInput {
   path: string; // canonical path with trailing slash, no query string
   noindex?: boolean;
   type?: "website" | "article";
+  image?: ImageRef;
 }
 
-export function buildMetadata({ title, description, path, noindex, type = "website" }: MetaInput): Metadata {
+export function buildMetadata({ title, description, path, noindex, type = "website", image = SHARE_IMAGE }: MetaInput): Metadata {
+  const images = [{ url: image.src, width: 1200, height: 630, alt: image.alt }];
   return {
     title,
     description,
     alternates: { canonical: path }, // resolved against metadataBase
     robots: noindex ? { index: false, follow: true } : undefined,
-    openGraph: { title, description, url: path, siteName: SITE.name, type },
-    twitter: { card: "summary", title, description },
+    openGraph: { title, description, url: path, siteName: SITE.name, type, images },
+    twitter: { card: "summary_large_image", title, description, images },
   };
 }
 

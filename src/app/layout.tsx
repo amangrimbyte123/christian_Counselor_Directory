@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: { default: `${SITE.name}: ${SITE.tagline}`, template: `%s | ${SITE.name}` },
   description:
-    "Find Christian couples counselors for marriage, premarital, affair recovery and more, by location and session type. Demo directory with sample data.",
+    "Find Christian couples therapy and marriage counseling near you or online: premarital, affair recovery, intimacy and more. Demo directory with sample data.",
   alternates: { canonical: "/" },
 };
 

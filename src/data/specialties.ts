@@ -40,6 +40,7 @@ export const specialties: Specialty[] = [
     faqs: [
       { q: "Is it appropriate to discuss sex with a Christian counselor?", a: "Yes. Christian counselors are trained to discuss physical intimacy respectfully and in a way that fits your values. You choose what you're comfortable talking about." },
       { q: "We're not in crisis, just distant. Is counseling for us?", a: "Yes. Many couples come in because the spark has faded under work, children and stress, and they want to reconnect before distance grows." },
+      { q: "Is this the same as sex therapy?", a: "It overlaps. Intimacy counseling covers emotional and physical closeness; sex therapy is specialist talk therapy for sexual difficulties, and some counselors are trained in both. There is never any physical contact in either." },
       { q: "What if there's a medical cause?", a: "Your counselor may suggest seeing a doctor alongside counseling, since health, medication and hormones can affect intimacy." },
     ] },
   { slug: "christian-marriage-reconciliation", name: "Separation & Reconciliation", icon: "repeat", summary: "Support when divorce is on the table or you're living apart.",

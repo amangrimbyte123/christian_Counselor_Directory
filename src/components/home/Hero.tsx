@@ -9,6 +9,7 @@ const QUICK = [
   { href: "/specialties/christian-premarital-counseling/", label: "Premarital" },
   { href: "/specialties/christian-affair-recovery/", label: "Affair recovery" },
   { href: "/specialties/christian-couples-communication/", label: "Communication" },
+  { href: "/christian-couples-therapy/", label: "Couples therapy" },
   { href: "/online-therapy/", label: "Online counseling" },
 ];
 
@@ -27,7 +28,7 @@ export function Hero() {
             <p className="eyebrow flex items-center gap-2">
               <span aria-hidden="true" className="h-px w-8 bg-brand-600" />
               <span className="sm:hidden">For Christian couples</span>
-              <span className="hidden sm:inline">Counseling for Christian couples</span>
+              <span className="hidden sm:inline">Christian couples therapy &amp; counseling</span>
             </p>
             <h1 id="hero-title" className="display mt-4 text-balance text-[2.35rem] sm:text-6xl lg:text-[4rem]">
               Strengthen your marriage with a counselor who <em className="text-brand-700">honours&nbsp;your&nbsp;faith</em>.

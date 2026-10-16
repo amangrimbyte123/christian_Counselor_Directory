@@ -11,17 +11,18 @@ import { Icon } from "@/components/ui/Icon";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { Faq, SectionHeading } from "@/components/ui/Misc";
 import { RevealObserver } from "@/components/ui/Reveal";
+import { PopularSearches } from "@/components/ui/PopularSearches";
 import { buildMetadata, faqJsonLd } from "@/lib/seo";
 import { absoluteUrl, SITE } from "@/lib/site";
 import { countBySpecialty, countOnline, listFeaturedTherapists, listLocations, listPosts, listSpecialties } from "@/lib/repository";
 
 export const metadata = buildMetadata({
-  title: "Find a Christian Couples Counselor",
-  description: "Find Christian couples and marriage counselors by what you're facing together, your location, and online or in-person sessions. A calm, honest directory (demo with sample data).",
+  title: "Christian Couples Therapy & Marriage Counseling Near You",
+  description: "Find Christian couples therapy near you or online. Compare faith-integrated couples and marriage counselors by what you're facing, location and fee (demo with sample data).",
   path: "/",
 });
 // buildMetadata title for "/" should not be templated twice
-metadata.title = { absolute: `${SITE.name}: ${SITE.tagline}` };
+metadata.title = { absolute: `Christian Couples Therapy & Marriage Counseling Near You | ${SITE.name}` };
 
 // Kept distinct from the "What to expect" questions above it
 const FAQS = [
@@ -42,11 +43,16 @@ export default async function HomePage() {
 
   return (
     <>
-      <JsonLd data={{ "@context": "https://schema.org", "@type": "WebSite", name: SITE.name, url: absoluteUrl("/") }} />
+      <JsonLd data={{
+        "@context": "https://schema.org", "@type": "WebSite", name: SITE.name, url: absoluteUrl("/"),
+        potentialAction: { "@type": "SearchAction", target: `${absoluteUrl("/therapists/")}?q={search_term_string}`, "query-input": "required name=search_term_string" },
+      }} />
+      <JsonLd data={{ "@context": "https://schema.org", "@type": "Organization", name: SITE.name, url: absoluteUrl("/"), description: "A directory for finding Christian couples therapy and marriage counseling, in person and online." }} />
       <JsonLd data={faqJsonLd([...BASICS.map(({ q, a }) => ({ q, a })), ...FAQS])} />
       <RevealObserver />
 
       <Hero />
+      <div className="container-page"><PopularSearches className="border-y border-sand-200 py-6" /></div>
       <TopicGrid specialties={specs} counts={counts} />
       <SupportTypes />
       <FeaturedTherapists therapists={featured} />
