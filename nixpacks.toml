@@ -5,6 +5,7 @@ providers = ["node"]
 NIXPACKS_NODE_VERSION = "22"
 NODE_ENV = "production"
 NEXT_TELEMETRY_DISABLED = "1"
+NEXT_PUBLIC_SITE_URL = "https://christiancrush.com"
 
 [phases.install]
 # Dev dependencies (TypeScript, Tailwind, PostCSS) are needed for the build

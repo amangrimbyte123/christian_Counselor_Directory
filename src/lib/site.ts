@@ -1,7 +1,7 @@
 export const SITE = {
   name: "Christian Couples Directory",
   tagline: "Find a Christian couples counselor who fits",
-  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(/\/$/, ""),
+  url: (process.env.NEXT_PUBLIC_SITE_URL || "https://christiancrush.com").replace(/\/$/, ""),
   pageSize: 9,
   /** Minimum practices a state/city needs before it gets an indexable landing page. */
   minForLocationPage: 2,
