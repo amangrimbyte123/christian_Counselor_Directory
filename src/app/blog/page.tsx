@@ -18,7 +18,7 @@ export default async function BlogPage() {
   const [lead, ...rest] = posts;
   return (
     <>
-      <PageHeader crumbs={[{ name: "Resources", href: "/blog/" }]} title="Christian marriage resources"
+      <PageHeader crumbs={[{ name: "Resources", href: "/blog/" }]} title="Guides for your marriage"
         intro="Plain-language guides to help you and your spouse find the right support. General information only, not medical advice." />
       <div className="container-page py-10">
         <Link href={`/blog/${lead.slug}/`} className="group grid gap-6 rounded-xl2 border border-sand-200 bg-white p-6 shadow-card hover:shadow-lift md:grid-cols-[1fr_1.4fr] md:p-8">

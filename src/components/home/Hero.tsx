@@ -26,14 +26,14 @@ export function Hero() {
           <div>
             <p className="eyebrow flex items-center gap-2">
               <span aria-hidden="true" className="h-px w-8 bg-brand-600" />
-              <span className="sm:hidden">Christian couples counseling</span>
-              <span className="hidden sm:inline">Christian couple relationship therapy</span>
+              <span className="sm:hidden">For Christian couples</span>
+              <span className="hidden sm:inline">Counseling for Christian couples</span>
             </p>
             <h1 id="hero-title" className="display mt-4 text-balance text-[2.35rem] sm:text-6xl lg:text-[4rem]">
               Strengthen your marriage with a counselor who <em className="text-brand-700">honours&nbsp;your&nbsp;faith</em>.
             </h1>
             <p className="mt-4 max-w-xl text-[1.05rem] text-ink-600 sm:mt-6 sm:text-xl">
-              Find Christian couples counselors by what you&apos;re facing together, where you live, and whether you&apos;d like to meet online or in person.<span className="hidden sm:inline"> Take your time: there&apos;s no sign-up and no pressure.</span>
+              Browse counselors by what you&apos;re facing together, where you live, and whether you&apos;d like to meet online or in person.<span className="hidden sm:inline"> Take your time: there&apos;s no sign-up and no pressure.</span>
             </p>
 
             <div className="mt-6 sm:mt-8"><SearchForm /></div>

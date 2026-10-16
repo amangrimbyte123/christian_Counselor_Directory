@@ -7,7 +7,7 @@ import { revealDelay } from "@/lib/motion";
 
 /** Everyday wording for each service; each links to its service page. */
 const TOPICS = [
-  { slug: "christian-marriage-counseling", title: "Christian marriage counseling", text: "Strengthening your marriage with faith welcome in the room, as much or as little as you like.", tone: "bg-brand-50 text-brand-700" },
+  { slug: "christian-marriage-counseling", title: "Marriage counseling", text: "Strengthening your marriage with faith welcome in the room, as much or as little as you like.", tone: "bg-brand-50 text-brand-700" },
   { slug: "christian-couples-communication", title: "Communication & conflict", text: "The same arguments on repeat, or conversations that shut down too fast.", tone: "bg-sand-100 text-ink-700" },
   { slug: "christian-affair-recovery", title: "Infidelity & trust repair", text: "Healing after an affair, secrecy or betrayal, and deciding what comes next.", tone: "bg-coral-50 text-coral-700" },
   { slug: "christian-premarital-counseling", title: "Premarital counseling", text: "Preparing for marriage by talking through money, family, roles and faith.", tone: "bg-sage-100 text-sage-600" },
@@ -24,7 +24,7 @@ export function TopicGrid({ specialties, counts }: { specialties: Specialty[]; c
       <div className="container-page grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-14">
         <div data-reveal>
           <SectionHeading id="topics" eyebrow="Explore by need" title={<>What would you like <em className="text-brand-700">help</em> with as a couple?</>}
-            intro="You don't need to be in crisis or have the perfect words. Start with whatever is on your hearts, and learn how Christian couples counseling can help." />
+            intro="You don't need to be in crisis or have the perfect words. Start with whatever is on your hearts, and see how counseling can help." />
           <div className="mt-8"><GuidedBrowse specialties={specialties.map(({ slug, name, summary }) => ({ slug, name, summary }))} /></div>
         </div>
 

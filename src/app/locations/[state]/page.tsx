@@ -34,7 +34,7 @@ export default async function StatePage({ params, searchParams }: Props) {
   return (
     <>
       <PageHeader crumbs={[{ name: "Locations", href: "/locations/" }, { name: s.name, href: `/locations/${s.slug}/` }]}
-        title={`Christian couples counselors in ${s.name}`}
+        title={`Counselors in ${s.name}`}
         intro={`${s.count} sample profiles in ${s.name}. Choose a city, or filter the full list below. Online sessions are also available from many counselors.`}>
         <ul className="flex flex-wrap gap-2" aria-label={`Cities in ${s.name}`}>
           {s.cities.map((c) => (

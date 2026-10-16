@@ -6,7 +6,7 @@ import { revealDelay } from "@/lib/motion";
 /** Short, general answers for first-timers, each pointing to a fuller guide. Not medical advice. */
 export const BASICS = [
   {
-    q: "How do we find the right Christian couples counselor?",
+    q: "How do we find the right counselor for us?",
     a: "Look for someone trained in couples therapy who works with what you're facing, then consider how they integrate faith, location or online, fees and availability. Feeling comfortable with them as a couple matters most, so a short first call is a good way to check.",
     href: "/blog/how-to-find-a-christian-marriage-counselor/", cta: "Step-by-step guide",
   },

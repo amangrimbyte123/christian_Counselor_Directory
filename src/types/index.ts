@@ -8,7 +8,7 @@ export type Profession =
 
 export interface Specialty {
   slug: string; // e.g. "christian-marriage-counseling"
-  name: string; // e.g. "Christian Marriage Counseling"
+  name: string; // e.g. "Marriage Counseling"
   icon: string; // key into components/ui/Icon
   summary: string;
   description: string;

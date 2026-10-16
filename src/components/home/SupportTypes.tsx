@@ -17,7 +17,7 @@ export function SupportTypes() {
       <div className="container-page">
         <div className="flex flex-wrap items-end justify-between gap-6" data-reveal>
           <SectionHeading id="support-types" eyebrow="Ways to meet" title="Find the right kind of couples support"
-            intro="Christian couples counseling can look different depending on your season of marriage and how you'd like to meet." />
+            intro="Counseling can look different depending on your season of marriage and how you'd like to meet." />
         </div>
         <ul className="mt-10 grid overflow-hidden rounded-xl2 border border-sand-200 bg-sand-200 sm:grid-cols-2 lg:grid-cols-3" style={{ gap: 1 }} data-reveal>
           {TYPES.map((t) => (

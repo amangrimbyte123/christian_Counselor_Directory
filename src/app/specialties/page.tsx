@@ -16,7 +16,7 @@ export default async function SpecialtiesPage() {
     <>
       <PageHeader
         crumbs={[{ name: "Services", href: "/specialties/" }]}
-        title="Christian couples counseling services"
+        title="How counseling can help"
         intro="Not sure where to start? Pick what feels closest to your marriage right now. Each page explains what the counseling involves and lists counselors who focus on it."
       />
       <div className="container-page py-10">

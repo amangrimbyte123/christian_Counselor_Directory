@@ -15,7 +15,7 @@ export default async function LocationsPage() {
   const states = await listLocations();
   return (
     <>
-      <PageHeader crumbs={[{ name: "Locations", href: "/locations/" }]} title="Find Christian couples counselors by location"
+      <PageHeader crumbs={[{ name: "Locations", href: "/locations/" }]} title="Find a counselor near you"
         intro="Choose a state to see its cities. Only locations with at least two sample profiles are listed. Prefer not to travel? Online couples counseling works from anywhere a counselor is licensed to practice." />
       <div className="container-page space-y-12 py-10">
         <Link href="/online-therapy/" className="flex items-center justify-between rounded-xl2 border border-brand-200 bg-brand-50 p-5 text-brand-800 hover:bg-brand-100">

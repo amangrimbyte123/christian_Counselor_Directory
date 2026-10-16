@@ -11,7 +11,7 @@ export const PHOTOS = {
   /** Hero image card: one photo per common concern, each linking to the matching service. */
   concerns: [
     { ...unsplash("1604881990409-b9f246db39da", "Two people holding hands across a table beside two mugs"),
-      label: "Christian marriage counseling", text: "Reconnecting, communicating, growing closer.", href: "/specialties/christian-marriage-counseling/", cta: "Explore marriage counseling" },
+      label: "Marriage counseling", text: "Reconnecting, communicating, growing closer.", href: "/specialties/christian-marriage-counseling/", cta: "Explore marriage counseling" },
     { ...unsplash("1604881991720-f91add269bed", "Two people holding hands across a table in a gesture of comfort"),
       label: "Infidelity & trust repair", text: "Healing after betrayal, at a pace you can both manage.", href: "/specialties/christian-affair-recovery/", cta: "Explore trust repair" },
     { ...unsplash("1594100513700-659fa01ce822", "An open Bible and a notebook with a pen on a wooden table surrounded by houseplants"),

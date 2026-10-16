@@ -30,7 +30,7 @@ export default async function TherapistsPage({ searchParams }: Props) {
     <>
       <PageHeader
         crumbs={[{ name: "Counselors", href: "/therapists/" }]}
-        title="Find a Christian couples counselor"
+        title="Find a counselor who fits"
         intro={`Browse ${total} sample profiles. Narrow by service, location, session type, language and fee, then open a profile to request an appointment.`}
       />
       <div className="container-page py-8 sm:py-10">

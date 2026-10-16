@@ -3,16 +3,16 @@ import { unsplash } from "@/lib/images";
 
 const AUTHOR = "Christian Couples Directory Editorial Team";
 
-/** General-information articles about Christian couples counseling, written for the demo. Not medical advice. */
+/** General-information articles for Christian couples, written for the demo. Not medical advice. */
 export const posts: Post[] = [
   {
     slug: "what-is-christian-couples-counseling", image: unsplash("1594100513700-659fa01ce822", "An open Bible and a notebook with a pen on a wooden table surrounded by houseplants"),
-    title: "What Is Christian Couples Counseling? How Faith-Integrated Marriage Therapy Works", category: "Faith & marriage", readMinutes: 6,
-    excerpt: "What Christian couples counseling involves, who provides it, and the questions to ask so you find someone qualified who respects your faith.", publishedOn: "2026-10-02", author: AUTHOR,
+    title: "How Faith Fits Into Couples Counseling", category: "Faith & marriage", readMinutes: 6,
+    excerpt: "What faith-centered counseling for couples involves, who provides it, and the questions to ask so you find someone qualified who respects your faith.", publishedOn: "2026-10-02", author: AUTHOR,
     relatedSpecialties: ["christian-marriage-counseling", "faith-and-spiritual-connection"],
     body: [
-      { p: "Christian couples counseling is relationship therapy that brings Christian faith into the conversation alongside established couples counseling methods. It is for couples who want their beliefs to be part of how they understand and work through what they are facing together." },
-      { h: "Who provides it", p: "Some Christian couples counselors are licensed clinicians, such as marriage and family therapists, professional counselors, social workers or psychologists, who integrate faith when a couple asks for it. Others are pastoral or biblical counselors working through churches, who may not hold a state licence. Both can be supportive, but only licensed clinicians are regulated by a state board." },
+      { p: "Faith-centered couples counseling is relationship therapy that brings your Christian faith into the conversation alongside established couples counseling methods. It is for couples who want their beliefs to be part of how they understand and work through what they are facing together." },
+      { h: "Who provides it", p: "Some counselors are licensed clinicians, such as marriage and family therapists, professional counselors, social workers or psychologists, who integrate faith when a couple asks for it. Others are pastoral or biblical counselors working through churches, who may not hold a state licence. Both can be supportive, but only licensed clinicians are regulated by a state board." },
       { h: "What sessions can look like", p: "Faith-integrated couples therapy still draws on research-based approaches such as emotionally focused therapy or the Gottman Method. Depending on what you both want, it might also include prayer, scripture, or exploring how your shared beliefs shape your marriage. A good counselor follows your lead about how much faith to include and never pressures either partner." },
       { h: "Questions to ask before you start", p: "Are you licensed, and in which state? What training do you have in couples therapy specifically? How do you integrate faith, and can we choose how much? How do you work with couples who see faith differently? You can verify any licence on your state licensing board's website." },
       { h: "You don't have to choose a Christian counselor", p: "Professional ethics codes ask licensed therapists to respect clients' religious and spiritual beliefs, so you can bring your faith into couples therapy with any licensed therapist. If it matters to you, ask in your first call how they would approach it." },
@@ -20,7 +20,7 @@ export const posts: Post[] = [
     ],
   },
   {
-    slug: "how-to-find-a-christian-marriage-counselor", image: unsplash("1517971129774-8a2b38fa128e", "A woman writing in a notebook at a table beside a window"), title: "How to Find a Christian Marriage Counselor: A Step-by-Step Guide", category: "Getting started", readMinutes: 6,
+    slug: "how-to-find-a-christian-marriage-counselor", image: unsplash("1517971129774-8a2b38fa128e", "A woman writing in a notebook at a table beside a window"), title: "How to Find the Right Marriage Counselor: A Step-by-Step Guide", category: "Getting started", readMinutes: 6,
     excerpt: "From agreeing what you want help with to booking a first call, a calm walk-through of finding the right counselor for your marriage.", publishedOn: "2026-09-12", author: AUTHOR,
     relatedSpecialties: ["christian-marriage-counseling", "christian-couples-communication"],
     body: [
@@ -58,7 +58,7 @@ export const posts: Post[] = [
     ],
   },
   {
-    slug: "online-vs-in-person-christian-couples-counseling", image: unsplash("1758874384555-de68b8035c24", "A young woman talking to her laptop camera in a colorful room at home"), title: "Online vs In-Person Christian Couples Counseling: Which Is Right for You?", category: "Online counseling", readMinutes: 5,
+    slug: "online-vs-in-person-christian-couples-counseling", image: unsplash("1758874384555-de68b8035c24", "A young woman talking to her laptop camera in a colorful room at home"), title: "Online or In-Person Counseling: Which Is Right for You Two?", category: "Online counseling", readMinutes: 5,
     excerpt: "Online couples counseling can work well for many couples. A look at the trade-offs.", publishedOn: "2026-07-28", author: AUTHOR,
     relatedSpecialties: ["christian-marriage-counseling", "christian-couples-life-transitions"],
     body: [
@@ -73,7 +73,7 @@ export const posts: Post[] = [
     excerpt: "Three widely used couples approaches, explained without jargon.", publishedOn: "2026-07-05", author: AUTHOR,
     relatedSpecialties: ["christian-couples-communication", "christian-intimacy-counseling"],
     body: [
-      { p: "Most Christian couples counselors draw on one or more established approaches and adapt them to your faith and values. Here are three you will often see on profiles." },
+      { p: "Most counselors draw on one or more established approaches and adapt them to your faith and values. Here are three you will often see on profiles." },
       { h: "The Gottman Method", p: "Based on decades of research with couples, it focuses on building friendship, managing conflict well and creating shared meaning. Couples often learn practical tools for softer starts to hard conversations and for repairing after a fight." },
       { h: "Emotionally Focused Therapy (EFT)", p: "EFT helps couples recognise the negative cycle they get stuck in, such as one partner pursuing and the other withdrawing, and reach for each other in new ways. It is one of the most researched couples therapies." },
       { h: "Imago Relationship Therapy", p: "Imago uses a structured dialogue where partners take turns mirroring and validating each other. Many couples find it helps them truly hear one another." },
@@ -107,7 +107,7 @@ export const posts: Post[] = [
   },
   {
     slug: "signs-your-marriage-needs-counseling", image: unsplash("1539541417736-3d44c90da315", "A person resting their head on another person's shoulder for comfort"), title: "Signs Your Marriage Could Benefit From Counseling", category: "Marriage health", readMinutes: 5,
-    excerpt: "You don't need to be in crisis. Common signs it may be time to talk to a Christian couples counselor.", publishedOn: "2026-04-09", author: AUTHOR,
+    excerpt: "You don't need to be in crisis. Common signs it may be time to talk to a counselor together.", publishedOn: "2026-04-09", author: AUTHOR,
     relatedSpecialties: ["christian-marriage-counseling", "christian-intimacy-counseling"],
     body: [
       { p: "Every marriage goes through hard seasons. Counseling often helps most when couples reach out early, before patterns become entrenched." },

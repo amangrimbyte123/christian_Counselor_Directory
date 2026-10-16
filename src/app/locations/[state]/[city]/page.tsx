@@ -43,7 +43,7 @@ export default async function CityPage({ params, searchParams }: Props) {
           { name: found.state.name, href: `/locations/${state}/` },
           { name: found.city.name, href: `/locations/${state}/${city}/` },
         ]}
-        title={`Christian couples counselors in ${found.city.name}, ${found.state.abbr}`}
+        title={`Counselors in ${found.city.name}, ${found.state.abbr}`}
         intro={`${found.city.count} sample profiles in ${found.city.name}. Compare services, fees and availability, then open a profile to request an appointment.`}
       />
       <div className="container-page py-10">

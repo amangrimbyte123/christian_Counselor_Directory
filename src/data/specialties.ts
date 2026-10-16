@@ -2,8 +2,8 @@ import type { Specialty } from "@/types";
 
 /** Christian couple relationship therapy, split into the areas couples most often look for. */
 export const specialties: Specialty[] = [
-  { slug: "christian-marriage-counseling", name: "Christian Marriage Counseling", icon: "heart", summary: "Faith-integrated counseling to strengthen and heal your marriage.",
-    description: "Christian marriage counseling combines established, evidence-based couples therapy with a Christian faith perspective, for couples who want their beliefs to be part of the work. How much faith is included, such as prayer, scripture or simply shared values, is always your choice as a couple.",
+  { slug: "christian-marriage-counseling", name: "Marriage Counseling", icon: "heart", summary: "Faith-integrated counseling to strengthen and heal your marriage.",
+    description: "Marriage counseling here combines established, evidence-based couples therapy with a Christian faith perspective, for couples who want their beliefs to be part of the work. How much faith is included, such as prayer, scripture or simply shared values, is always your choice as a couple.",
     signs: ["You feel more like roommates than partners", "The same arguments keep coming back", "You want your faith to be welcome in counseling", "You want to invest in your marriage before problems grow"],
     faqs: [
       { q: "What is Christian marriage counseling?", a: "Couples therapy that integrates Christian faith with established methods such as emotionally focused therapy or the Gottman Method. Sessions can include prayer or scripture if you both want them, but they don't have to." },

@@ -22,7 +22,7 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
   if (!s) return { title: "Service not found", robots: { index: false } };
   return listingMetadata({
     title: `${s.name}: Christian Couples Counselors`,
-    description: `${s.summary} Learn what ${topicLower(s.name)} involves and browse sample Christian couples counselors who focus on it.`,
+    description: `${s.summary} Learn what ${topicLower(s.name)} involves and browse sample counselors who focus on it.`,
     path: `/specialties/${s.slug}/`,
     params: parseSearchParams(await searchParams),
     ignore: ["specialty"],
@@ -45,7 +45,7 @@ export default async function SpecialtyPage({ params, searchParams }: Props) {
     <>
       <JsonLd data={faqJsonLd(s.faqs)} />
       <PageHeader crumbs={[{ name: "Services", href: "/specialties/" }, { name: s.name, href: `/specialties/${s.slug}/` }]}
-        title={`${s.name}: Christian couples counselors`} intro={s.description} />
+        title={s.name} intro={s.description} />
       <div className="container-page py-10">
         <div className="mb-10 rounded-xl2 border border-sand-200 bg-white p-6">
           <h2 className="text-2xl">Common signs your marriage might benefit</h2>

@@ -11,7 +11,7 @@ export const metadata = buildMetadata({
 export default function AboutPage() {
   return (
     <ProsePage title="About Christian Couples Directory" path="/about/" intro="A calmer, clearer way for Christian couples to find marriage support.">
-      <p>Christian Couples Directory is a demonstration project: a fully working directory of Christian couples and marriage counselors built on <strong>fictional sample data</strong>. It shows how searching, filtering, profiles and requests can feel simple and trustworthy.</p>
+      <p>Christian Couples Directory is a demonstration project: a fully working directory of marriage counselors for Christian couples, built on <strong>fictional sample data</strong>. It shows how searching, filtering, profiles and requests can feel simple and trustworthy.</p>
       <h2>What we believe</h2>
       <ul>
         <li><strong>Clarity over pressure.</strong> No countdown timers, no fake scarcity.</li>
